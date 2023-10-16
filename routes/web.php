@@ -31,6 +31,7 @@ Route::controller(MenuController::class)->middleware(['auth'])->group(function()
     Route::get('/', 'index')->name('index');
     Route::get('/menus/create', 'create')->name('create');
     Route::post('/menus','store')->name('store');
+    Route::post('/menus/{menu}/workout', 'workout')->name('workout');
     Route::get('/menus/{menu}', 'show')->name('show');
     Route::put('/menus/{menu}', 'update')->name('update');
     Route::delete('/menus/{menu}', 'delete')->name('delete');
