@@ -11,15 +11,36 @@
         
     </head>
     <body>
-        <h1 class="name">
-            {{ $menu->name }}
-        </h1>
-        
-        <div class="category">
-            <a href="">{{$menu->category->name}}</a>
+        <div class="toTrainingMenus">
+            <a href="/">TrainingMenusへ</a>
         </div>
+        
+        <div class="menuName">
+            <h1 class="name">{{ $menu->name }}</h1>
+        </div>
+        <div class="category">
+            <h4>部位：{{$menu->category->name}}<h4>
+        </div>
+        
+        <div class="training">
+            <form action="/menus/{{$menu->id}}/workout" method="post">
+                @csrf
+                <div class="weight">
+                    <input type="number" name="result[weight]">kg
+                </div>
+                <div class="repetition">
+                    <input type="number" name="result[reps]">reps
+                </div>
+                <input type="submit" value="goToWorkout"/>
+            </form>
+                
+        </div>
+        
         <div class="edit">
             <a href="/menus/{{$menu->id}}/edit">edit</a>
+        </div>
+        <div class="reset">
+            <a href="">reset</a>
         </div>
         <div class="delete">
             <form action="/menus/{{$menu->id}}" id="form_{{$menu->id}}" method="post">
@@ -28,8 +49,9 @@
                 <button type="button" onclick="deletePost({{$menu->id}})">delete</button>
             </form>
         </div>
-        <div class="footer">
-            <a href="/">戻る</a>
+        
+        <div>{{$menu->id}}</div>
+        
         <script>
                 function deletePost(id) {
                     'use strict'//最新の方法で動作させるときに書くコード

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\Category;
-//まだ追加することあるよ
+use App\Models\Result;
 
 
 class MenuController extends Controller
@@ -66,6 +66,18 @@ class MenuController extends Controller
         //
         return view('menus.show')->with(['menu' => Menu::findOrFail($id)
         ]);
+    }
+    
+    public function workout(Request $request, Menu $menu, Result $result)
+    {
+        $user_id = Auth::id();
+        
+        $result->user_id = $user_id;
+        $result->menu_id = $menu->id;
+        $input = $request['result'];
+        $result->fill($input)->save();
+        
+        return redirect('/menus/' . $menu->id);
     }
 
     /**
