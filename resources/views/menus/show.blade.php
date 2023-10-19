@@ -22,6 +22,32 @@
             <h4>部位：{{$menu->category->name}}<h4>
         </div>
         
+        <div class="simulation">
+            <p>
+                maxWeightResult
+            </p>
+            <p>
+                {{$maxWeightResult->weight ?? 'データなし'}}&nbsp;{{$maxWeightResult->reps ?? ''}}
+            </p>
+            <p>
+                maxWeightResults = 最近の記録の中で、weightの記録が良い順(repsの記録は考慮しない)に並べています。
+            </p>
+            <p>
+                @foreach ($maxWeightResults as $maxWeightResult)
+                {{$maxWeightResult->weight ?? 'データなし'}}&nbsp;{{$maxWeightResult->reps ?? ''}}
+                @endforeach
+            </p>
+        </div>
+        
+        <div class="yourBest">
+            <p>
+                最近のあなたのベスト
+            </p>
+            <p>
+                {{$maxResult->weight ?? 'データなし'}}&nbsp;{{$maxResult->reps ?? ''}}
+            </p>
+        </div>
+        
         <div class="training">
             <form action="/menus/{{$menu->id}}/workout" method="post">
                 @csrf
@@ -34,6 +60,15 @@
                 <input type="submit" value="goToWorkout"/>
             </form>
                 
+        </div>
+        
+        <div class='latestResult'>
+            <p>
+                latestResult
+            </p>
+            @foreach ($latestResults as $latestResult)
+                <p>{{$latestResult->updated_at}}&nbsp;&nbsp;&nbsp;{{$latestResult->weight}}&nbsp;{{$latestResult->reps}}<br></P>
+            @endforeach
         </div>
         
         <div class="edit">
@@ -50,7 +85,6 @@
             </form>
         </div>
         
-        <div>{{$menu->id}}</div>
         
         <script>
                 function deletePost(id) {

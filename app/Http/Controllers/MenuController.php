@@ -61,10 +61,49 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Menu $menu)
     {
-        //
-        return view('menus.show')->with(['menu' => Menu::findOrFail($id)
+        //変数定義
+        $user_id = Auth::id();
+        //userとmenuが一致するresultsテーブル
+        $results = Result::where([
+            ['user_id', $user_id],
+            ['menu_id', $menu->id],
+            ]);
+        //直近三回のデータを新しい順に取得
+        $latestResults = $results->orderBy('created_at', 'desc')->take(3)->get();
+        
+        //RM換算表に基づいた計算をするためのコード
+        //しかしこれの計算は直近三回のデータを元に行う
+        // weightが最大のレコードを取得
+        $maxWeightResult
+        = $latestResults
+        ->sortByDesc('weight')
+        ->first();
+        
+        $maxWeightResults = $latestResults
+        ->sortByDesc('weight');
+        
+        //その中でrepsが最大のレコードを取得
+        if ($maxWeightResult){
+            $maxResult = $latestResults
+            ->where('weight', $maxWeightResult->weight)
+            ->sortByDesc('reps')
+            ->first();
+        } else {
+            $maxResult = null;
+        }
+        
+        
+        
+        //viewを返す
+        return view('menus.show')->with([
+            'menu' => Menu::findOrFail($menu->id),
+            'latestResults' => $latestResults,
+            'maxResult' => $maxResult,
+            //ここから下は実験
+            'maxWeightResult' => $maxWeightResult,
+            'maxWeightResults' => $maxWeightResults,
         ]);
     }
     
@@ -77,7 +116,10 @@ class MenuController extends Controller
         $input = $request['result'];
         $result->fill($input)->save();
         
-        return redirect('/menus/' . $menu->id);
+        //return redirect('/menus/' . $menu->id);
+        return view('menus.workout')->with([
+            'menu' => Menu::findOrFail($menu->id),
+            ]);
     }
 
     /**

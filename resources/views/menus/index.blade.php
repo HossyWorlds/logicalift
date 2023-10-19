@@ -18,7 +18,7 @@
             <a href="/menus/{{$menu->id}}">
                 {{$menu->name}}
             </a>
-            <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}
+            <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
             </a>
             @endforeach
         </div>
