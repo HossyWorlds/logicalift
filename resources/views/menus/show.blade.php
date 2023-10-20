@@ -30,11 +30,11 @@
                 {{$maxWeightResult->weight ?? 'データなし'}}&nbsp;{{$maxWeightResult->reps ?? ''}}
             </p>
             <p>
-                maxWeightResults = 最近の記録の中で、weightの記録が良い順(repsの記録は考慮しない)に並べています。
+                maxWeightResults = 最近の記録(3件)の中で、weightの記録が良い順(repsの記録は考慮しない)に並べています。
             </p>
             <p>
                 @foreach ($maxWeightResults as $maxWeightResult)
-                {{$maxWeightResult->weight ?? 'データなし'}}&nbsp;{{$maxWeightResult->reps ?? ''}}
+                {{$maxWeightResult->weight}}&nbsp;{{$maxWeightResult->reps}}
                 @endforeach
             </p>
         </div>
