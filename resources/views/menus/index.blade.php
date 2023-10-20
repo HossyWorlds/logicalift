@@ -11,19 +11,26 @@
         
     </head>
     <body>
-        <h1>TrainingMenus</h1>
-        <div class="searchForMenu"></div>
-        <div class="menus">
-            @foreach ($menus as $menu)
-            <a href="/menus/{{$menu->id}}">
-                {{$menu->name}}
-            </a>
-            <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
-            </a>
-            @endforeach
-        </div>
-        <div class="createMenu">
-            <a href='/menus/create'>メニューを増やす</a>
-        </div>
+        <x-app-layout>
+            <x-slot name="header">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ __('TrainingMenus') }}
+                </h2>
+            </x-slot>
+            
+            <div class="searchForMenu"></div>
+            <div class="menus">
+                @foreach ($menus as $menu)
+                <a href="/menus/{{$menu->id}}">
+                    {{$menu->name}}
+                </a>
+                <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
+                </a>
+                @endforeach
+            </div>
+            <div class="createMenu">
+                <a href='/menus/create'>メニューを増やす</a>
+            </div>
+        </x-app-layout>
     </body>
 </html>
