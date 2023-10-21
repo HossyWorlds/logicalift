@@ -73,8 +73,7 @@ class MenuController extends Controller
         //直近三回のデータを新しい順に取得
         $latestResults = $results->orderBy('created_at', 'desc')->take(3)->get();
         
-        //RM換算表に基づいた計算をするためのコード
-        //しかしこれの計算は直近三回のデータを元に行う
+        //ここからの話は直近三回のデータが前提
         // weightが最大のレコードを取得
         $maxWeightResult
         = $latestResults
@@ -94,6 +93,35 @@ class MenuController extends Controller
             $maxResult = null;
         }
         
+        //RM換算
+        //前提
+        $plusWeight = 5;
+        $minReps = 6;
+        // 1RM = $maxResult->weight * (1+$maxResult->reps/40)
+        if ($maxResult) {
+            $weight = $maxResult->weight;
+            $reps = $maxResult->reps;
+            $oneRM = $weight * ( 1 + $reps/40 );
+            $newReps = ($oneRM/( $weight + $plusWeight ) - 1) * 40;
+        } else {
+            $weight = null;
+            $reps = null;
+            $oneRM = null;
+            $newReps = null;
+        }
+        
+        
+        //1RMに換算
+        
+        //1RM = ( $weight + $plusWeight ) * ( 1 + $newReps/40 )
+        if ( !$newReps ) {
+            $newWeight = null;
+        } elseif ( $newReps >= $minReps ) {
+            $newWeight = $weight + $plusWeight;
+        } else {
+            $newWeight = 'まだ次のステージには行けません。';
+        }
+        
         
         
         //viewを返す
@@ -104,6 +132,12 @@ class MenuController extends Controller
             //ここから下は実験
             'maxWeightResult' => $maxWeightResult,
             'maxWeightResults' => $maxWeightResults,
+            //実験
+            'weight' => $weight,
+            'reps' => $reps,
+            'oneRM' => $oneRM,
+            'newReps' => $newReps,
+            'newWeight' => $newWeight,
         ]);
     }
     

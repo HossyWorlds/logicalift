@@ -48,6 +48,39 @@
             </p>
         </div>
         
+        <div class="simulation2">
+            <p>
+                weight
+            </p>
+            <p>
+                {{$weight ?? 'データなし'}}
+            </p>
+            <p>
+                reps
+            </p>
+            <p>
+                {{$reps ?? 'データなし'}}
+            </p>
+            <p>
+                1RM
+            </p>
+            <P>
+                {{$oneRM ?? 'データなし'}}
+            </P>
+            <p>
+                newReps
+            </p>
+            <p>
+                {{$newReps ?? 'データなし'}}
+            </p>
+            <p>
+                newWeight
+            </p>
+            <p>
+                {{$newWeight ?? 'データなし'}}
+            </p>
+        </div>
+        
         <div class="training">
             <form action="/menus/{{$menu->id}}/workout" method="post">
                 @csrf
