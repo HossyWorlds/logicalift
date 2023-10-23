@@ -95,34 +95,37 @@ class MenuController extends Controller
         
         //RM換算
         //前提
-        $plusWeight = 5;
+        $plusWeight = $menu->plus_weight;
         $minReps = 6;
         // 1RM = $maxResult->weight * (1+$maxResult->reps/40)
         if ($maxResult) {
             $weight = $maxResult->weight;
             $reps = $maxResult->reps;
             $oneRM = $weight * ( 1 + $reps/40 );
-            $newReps = ($oneRM/( $weight + $plusWeight ) - 1) * 40;
+            $newWeight = $weight + $plusWeight;
+            $newReps = ($oneRM/( $newWeight ) - 1) * 40;
+            if ( $newReps >= $minReps ){
+                $newIntReps = (int) $newReps;
+                $advice = "あなたは{$newWeight}kgを{$newIntReps}回やる能力があります！
+                次の40kgに挑戦しましょう！";
+            } else {
+                $needReps = 40*(($newWeight/$weight)*(($minReps/40)+1)-1)-$reps;
+                if ($needReps>(int)$needReps){
+                    $needIntReps = (int)$needReps + 1;
+                    } else {
+                        $needIntReps = (int)$needReps;
+                    }
+                $advice = "次の{$newWeight}kgに行くためには、現在の{$weight}kgを、
+                前回の{$reps}回に加えてもう{$needIntReps}回やる必要があります！";
+            }
         } else {
             $weight = null;
             $reps = null;
             $oneRM = null;
             $newReps = null;
-        }
-        
-        
-        //1RMに換算
-        
-        //1RM = ( $weight + $plusWeight ) * ( 1 + $newReps/40 )
-        if ( !$newReps ) {
             $newWeight = null;
-        } elseif ( $newReps >= $minReps ) {
-            $newWeight = $weight + $plusWeight;
-        } else {
-            $newWeight = 'まだ次のステージには行けません。';
+            $advice = null;
         }
-        
-        
         
         //viewを返す
         return view('menus.show')->with([
@@ -138,6 +141,7 @@ class MenuController extends Controller
             'oneRM' => $oneRM,
             'newReps' => $newReps,
             'newWeight' => $newWeight,
+            'advice' => $advice,
         ]);
     }
     
@@ -183,7 +187,6 @@ class MenuController extends Controller
         //
         $input_menu = $request['menu'];
         $menu->fill($input_menu)->save();
-        
         return redirect('/menus/' . $menu->id);
     }
 
