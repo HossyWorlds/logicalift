@@ -14,6 +14,7 @@ class Menu extends Model
     protected $fillable = [
         'name',
         'category_id',
+        'plus_weight',
         ];
     
     public function category(){

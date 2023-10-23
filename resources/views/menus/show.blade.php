@@ -22,20 +22,9 @@
             <h4>部位：{{$menu->category->name}}<h4>
         </div>
         
-        <div class="simulation">
+        <div class="advice">
             <p>
-                maxWeightResult
-            </p>
-            <p>
-                {{$maxWeightResult->weight ?? 'データなし'}}&nbsp;{{$maxWeightResult->reps ?? ''}}
-            </p>
-            <p>
-                maxWeightResults = 最近の記録(3件)の中で、weightの記録が良い順(repsの記録は考慮しない)に並べています。
-            </p>
-            <p>
-                @foreach ($maxWeightResults as $maxWeightResult)
-                {{$maxWeightResult->weight}}&nbsp;{{$maxWeightResult->reps}}
-                @endforeach
+                {{$advice ?? ''}}
             </p>
         </div>
         
@@ -50,31 +39,13 @@
         
         <div class="simulation2">
             <p>
-                weight
-            </p>
-            <p>
-                {{$weight ?? 'データなし'}}
-            </p>
-            <p>
-                reps
-            </p>
-            <p>
-                {{$reps ?? 'データなし'}}
-            </p>
-            <p>
-                1RM
+                ステップアップの間隔
             </p>
             <P>
-                {{$oneRM ?? 'データなし'}}
+                {{$menu->plus_weight}}
             </P>
             <p>
-                newReps
-            </p>
-            <p>
-                {{$newReps ?? 'データなし'}}
-            </p>
-            <p>
-                newWeight
+                次の重さ
             </p>
             <p>
                 {{$newWeight ?? 'データなし'}}
@@ -85,7 +56,7 @@
             <form action="/menus/{{$menu->id}}/workout" method="post">
                 @csrf
                 <div class="weight">
-                    <input type="number" name="result[weight]">kg
+                    <input type="number" name="result[weight]" step="0.1">kg
                 </div>
                 <div class="repetition">
                     <input type="number" name="result[reps]">reps

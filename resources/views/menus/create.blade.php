@@ -24,6 +24,11 @@
                     @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
+                </select>
+            </div>
+            <div class="plusWeight">
+                <h2>plusWeight?</h2>
+                <input type="number" name="menu[plus_weight]" step="0.1"/>kg<br>
             </div>
             <input type="submit" value="store"/>
         </form>

@@ -13,13 +13,18 @@
                 <h2>menuCategory?</h2>
                 <select name="menu[category_id]">
                     @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        <option value="{{$category->id}}">{{$menu->category->name}}</option>
                     @endforeach
+                </select>
             </div>
-            <input type="submit" value="保存">
-            <div class="footer">
-                <a href="/">戻る</a>
+            <div class="plusWeight">
+                <h2>plusWeight?</h2>
+                <input type="number" name="menu[plus_weight]" step="0.1" value="{{$menu->plus_weight}}"/>kg<br>
             </div>
+            <input type="submit" value="保存"/>
         </form>
+        <div class="footer">
+            <a href="/">戻る</a>
+        </div>
     </div>
 </body>
