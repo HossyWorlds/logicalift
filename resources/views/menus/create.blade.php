@@ -16,7 +16,8 @@
             @csrf
             <div class="name">
                 <h2>menuName?</h2>
-                <input type="text" name="menu[name]" placeholder="newMenu"/><br>
+                <input type="text" name="menu[name]" placeholder="newMenu" value="{{old('menu.name')}}"/><br>
+                <p class="name_error" style="color:red">{{$errors->first('menu.name')}}</p>
             </div>
             <div class="category">
                 <h2>menuCategory?</h2>
@@ -28,7 +29,8 @@
             </div>
             <div class="plusWeight">
                 <h2>plusWeight?</h2>
-                <input type="number" name="menu[plus_weight]" step="0.1"/>kg<br>
+                <input type="number" name="menu[plus_weight]" step="0.1" value="{{old('menu.plus_weight')}}"/>kg<br>
+                <p class="plusWeight_error" style="color:red">{{$errors->first('menu.plus_weight')}}</p>
             </div>
             <input type="submit" value="store"/>
         </form>

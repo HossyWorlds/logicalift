@@ -10,6 +10,9 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Result;
 
+use App\Http\Requests\MenuRequest;
+use App\Http\Requests\ResultRequest;
+
 
 class MenuController extends Controller
 {
@@ -47,7 +50,7 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Menu $menu)
+    public function store(MenuRequest $request, Menu $menu)
     {
         //
         $input = $request['menu'];
@@ -145,7 +148,7 @@ class MenuController extends Controller
         ]);
     }
     
-    public function workout(Request $request, Menu $menu, Result $result)
+    public function workout(ResultRequest $request, Menu $menu, Result $result)
     {
         $user_id = Auth::id();
         
@@ -182,7 +185,7 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
+    public function update(MenuRequest $request, Menu $menu)
     {
         //
         $input_menu = $request['menu'];

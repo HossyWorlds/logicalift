@@ -8,6 +8,7 @@
             <div class='name'>
                 <h2>nameName?</h2>
                 <input type='text' name='menu[name]' value="{{ $menu->name }}">
+                <p class="name_error" style="color:red">{{$errors->first('menu.name')}}</p>
             </div>
             <div class='category'>
                 <h2>menuCategory?</h2>
@@ -20,6 +21,7 @@
             <div class="plusWeight">
                 <h2>plusWeight?</h2>
                 <input type="number" name="menu[plus_weight]" step="0.1" value="{{$menu->plus_weight}}"/>kg<br>
+                <p class="plusWeight_error" style="color:red">{{$errors->first('menu.plus_weight')}}</p>
             </div>
             <input type="submit" value="保存"/>
         </form>
