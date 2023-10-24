@@ -56,10 +56,12 @@
             <form action="/menus/{{$menu->id}}/workout" method="post">
                 @csrf
                 <div class="weight">
-                    <input type="number" name="result[weight]" step="0.1">kg
+                    <input type="number" name="result[weight]" step="0.1" value="{{ old('result.weight') }}">kg
+                    <p class="weight_error" style="color:red">{{$errors->first('result.weight')}}</p>
                 </div>
                 <div class="repetition">
-                    <input type="number" name="result[reps]">reps
+                    <input type="number" name="result[reps]" value="{{ old('result.reps') }}">reps
+                    <p class="reps_error" style="color:red">{{$errors->first('result.reps')}}</p>
                 </div>
                 <input type="submit" value="goToWorkout"/>
             </form>
