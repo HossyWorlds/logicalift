@@ -21,13 +21,30 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $keyword = $request->input('keyword');
+        
+        //しかし以下はできない。menusテーブルにuser_idというものがないからである。
+        //中間テーブルなどをうまく活用するのだろうか。
+        //$user_id = Auth::id();
+        //$menus = Menu::where('user_id','=',$user_id)->get();
+        
+        $menus = Menu::query();
+        
+        if (!empty($keyword)) {
+            $menus->where('name', 'LIKE', "%{$keyword}%");
+        }
+        
+        $menus = $menus->get();
+        //上下のやつを両立させたい
+        
+        
         return view('menus.index')->with([
-            'menus' => Menu::all(),
+            'menus' => $menus,
             'categories' => Category::all(),
-            
+            'keyword' => $keyword,
             ]);
     }
 
