@@ -37,19 +37,24 @@
             </p>
         </div>
         
-        <div class="simulation2">
+        <div class="stepUp">
             <p>
                 ステップアップの間隔
             </p>
             <P>
                 {{$menu->plus_weight}}
             </P>
+        </div>    
+        <div class="newWeight">
             <p>
                 次の重さ
             </p>
             <p>
                 {{$newWeight ?? 'データなし'}}
             </p>
+        </div>
+        <div class="sharingOrNot">
+            {{$sharing}}
         </div>
         
         <div class="training">

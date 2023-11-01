@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('menu_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('menu_id')->constrained('menus');
-            
-            $table->float('weight', 8, 2);
-            $table->integer('reps');
             $table->timestamps();
+            $table->unique(['user_id', 'menu_id']);
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('menu_user');
     }
 };

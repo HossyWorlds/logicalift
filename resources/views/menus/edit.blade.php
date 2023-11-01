@@ -23,10 +23,12 @@
                 <input type="number" name="menu[plus_weight]" step="0.1" value="{{$menu->plus_weight}}"/>kg<br>
                 <p class="plusWeight_error" style="color:red">{{$errors->first('menu.plus_weight')}}</p>
             </div>
+            <div class="shareOrNot">
+            
             <input type="submit" value="保存"/>
         </form>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/menus/{{ $menu->id }}">戻る</a>
         </div>
     </div>
 </body>
