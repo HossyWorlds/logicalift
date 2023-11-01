@@ -13,9 +13,19 @@ class Menu extends Model
     
     protected $fillable = [
         'name',
+        'user_id',
         'category_id',
         'plus_weight',
+        'sharing',
         ];
+    
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    
+    public function sharedWithUsers(){
+        return $this->belongsToMany(User::class, 'menu_user', 'menu_id', 'user_id');
+    }
     
     public function category(){
         return $this->belongsTo(Category::class);

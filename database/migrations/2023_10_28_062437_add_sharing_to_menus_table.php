@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('menu_id')->constrained('menus');
-            
-            $table->float('weight', 8, 2);
-            $table->integer('reps');
-            $table->timestamps();
+        Schema::table('menus', function (Blueprint $table) {
+            //
+            $table->boolean('sharing')->default(0);
         });
     }
 
@@ -31,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::table('menus', function (Blueprint $table) {
+            //
+            $table->dropColumn('sharing');
+        });
     }
 };

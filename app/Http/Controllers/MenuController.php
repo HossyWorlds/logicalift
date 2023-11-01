@@ -26,26 +26,77 @@ class MenuController extends Controller
         //
         $keyword = $request->input('keyword');
         
-        //しかし以下はできない。menusテーブルにuser_idというものがないからである。
-        //中間テーブルなどをうまく活用するのだろうか。
-        //$user_id = Auth::id();
-        //$menus = Menu::where('user_id','=',$user_id)->get();
+        //大前提としてメニューに表示できるのは
+        //自分のオリジナルメニューと共有メニュー。
+        $user_id = Auth::id();
+        $menusQuery = Menu::query()->where('user_id', $user_id);
+        //dd($menus);
         
-        $menus = Menu::query();
+        $sharedMenusQuery = User::find($user_id)->sharingMenus()
+        ->where('sharing', 1);
+        //dd($sharedMenusQuery);
         
         if (!empty($keyword)) {
-            $menus->where('name', 'LIKE', "%{$keyword}%");
+            $menusQuery->where('name', 'LIKE', "%{$keyword}%");
+            $sharedMenusQuery->where('name', 'LIKE', "%{$keyword}%");
         }
         
-        $menus = $menus->get();
-        //上下のやつを両立させたい
-        
+        $menus = $menusQuery->get();
+        $sharedMenus = $sharedMenusQuery->get();
+        //dd($sharedMenus);
         
         return view('menus.index')->with([
             'menus' => $menus,
+            'sharedMenus' => $sharedMenus,
             'categories' => Category::all(),
             'keyword' => $keyword,
             ]);
+    }
+    
+    public function admin(Request $request)
+    {
+        $loginUserId = Auth::id();
+        $category_idInput = $request->category;
+        $keyword = $request->input('keyword');
+        
+        $sharedMenusQuery = Menu::query()->where('sharing',1)
+        ->where('user_id', '!=', $loginUserId)
+        ->whereNotIn('id', function($query) use ($loginUserId) {
+            $query->select('menu_id')
+            ->from('menu_user')
+            ->where('user_id', $loginUserId);
+        });
+        
+        if (!empty($keyword)) {
+             $sharedMenusQuery->where('name', 'LIKE', "%{$keyword}%");
+        }
+        
+        if (!empty($category_idInput)) {
+            $sharedMenusQuery->where('category_id', $category_idInput);
+        }
+        
+        $sharedMenus = $sharedMenusQuery->get();
+        
+        return view('menus.admin')->with([
+            'sharedMenus' => $sharedMenus,
+            'categories' => Category::all(),
+            'keyword' => $keyword,
+            
+            //'selectedSharedMenuId' => $selectedSharedMenuId,
+            //'selectedSharedMenu' => $selectedSharedMenu,
+            ]);
+    }
+    
+    public function add(Request $request){
+        
+        $loginUserId = Auth::id();
+        
+        $selectedSharedMenuId = $request->sharedMenu;
+        $selectedSharedMenu = Menu::find($selectedSharedMenuId);
+        $selectedSharedMenu->sharedWithUsers()->attach($loginUserId);
+        
+        return redirect('/menus/admin');
+        
     }
 
     /**
@@ -53,13 +104,13 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-        return view('menus.create')->with([
-            'categories'=>Category::all(),
-            ]);
-    }
+    //public function create()
+    //{
+    //    //
+    //    return view('menus.create')->with([
+    //        'categories'=>Category::all(),
+    //        ]);
+    //}
 
     /**
      * Store a newly created resource in storage.
@@ -69,9 +120,15 @@ class MenuController extends Controller
      */
     public function store(MenuRequest $request, Menu $menu)
     {
-        //
+        //menusテーブルの更新
+        $user_id = Auth::id();
+        $menu->user_id = $user_id;
         $input = $request['menu'];
         $menu->fill($input)->save();
+        
+        //menu_usersテーブルの更新
+        $menu->sharedWithUsers()->attach($user_id);
+        
         return redirect('/menus/' . $menu->id);
     }
 
@@ -147,21 +204,21 @@ class MenuController extends Controller
             $advice = null;
         }
         
+        $myMenu = Menu::findOrFail($menu->id);
+        if ($myMenu->sharing == 0){
+            $sharing = "オリジナルトレーニング";
+        } else {
+            $sharing = "共有トレーニング";
+        }
+        
         //viewを返す
         return view('menus.show')->with([
-            'menu' => Menu::findOrFail($menu->id),
+            'menu' => $myMenu,
             'latestResults' => $latestResults,
             'maxResult' => $maxResult,
-            //ここから下は実験
-            'maxWeightResult' => $maxWeightResult,
-            'maxWeightResults' => $maxWeightResults,
-            //実験
-            'weight' => $weight,
-            'reps' => $reps,
-            'oneRM' => $oneRM,
-            'newReps' => $newReps,
             'newWeight' => $newWeight,
             'advice' => $advice,
+            'sharing' => $sharing,
         ]);
     }
     

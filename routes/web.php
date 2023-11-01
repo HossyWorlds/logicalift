@@ -29,8 +29,9 @@ Route::get('/dashboard', function () {
 
 Route::controller(MenuController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
-    Route::get('/menus/create', 'create')->name('create');
+    Route::get('/menus/admin', 'admin')->name('admin');
     Route::post('/menus','store')->name('store');
+    Route::post('/menus/add','add')->name('add');
     Route::post('/menus/{menu}/workout', 'workout')->name('workout');
     Route::get('/menus/{menu}', 'show')->name('show');
     Route::put('/menus/{menu}', 'update')->name('update');

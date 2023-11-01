@@ -42,6 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    public function menus(){
+        return $this->hasMany(Menu::class);
+    }
+    
+    public function sharingMenus(){
+        return $this->belongsToMany(Menu::class);
+    }
+    
     public function results(){
         return $this->hasMany(Result::class);
     }

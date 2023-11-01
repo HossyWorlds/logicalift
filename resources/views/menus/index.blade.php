@@ -18,23 +18,39 @@
                 </h2>
             </x-slot>
             
-            <div class="searchForMenu"></div>
+            <div class="searchForMenu">
                 <form action="/" method="GET">
                     @csrf
                     <input type="text" name="keyword" value="{{ $keyword }}">
                     <input type="submit" value="検索">
                 </form>
+            </div>
+                
             <div class="menus">
-                @foreach ($menus as $menu)
-                <a href="/menus/{{$menu->id}}">
-                    {{$menu->name}}
-                </a>
-                <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
-                </a>
-                @endforeach
+                <div class="originalMenus">
+                    <p>@originalMenus</p>
+                    @foreach ($menus as $menu)
+                    <a href="/menus/{{$menu->id}}">
+                        {{$menu->name}}
+                    </a>
+                    <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
+                    </a>
+                    @endforeach
+                </div>
+                <div class="sharedMenus">
+                    <p>@sharedMenus</p>
+                    @foreach ($sharedMenus as $sharedMenu)
+                    <a href="/menus/{{$sharedMenu->id}}">
+                        {{$sharedMenu->name}}
+                    </a>
+                    <a href="/categories/{{$sharedMenu->category->id}}">{{$sharedMenu->category->name}}<br>
+                    </a>
+                    @endforeach
+                </div>
+                
             </div>
             <div class="createMenu">
-                <a href='/menus/create'>メニューを増やす</a>
+                <a href='/menus/admin'>メニューを追加する</a>
             </div>
         </x-app-layout>
     </body>
