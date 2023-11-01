@@ -35,6 +35,7 @@ Route::controller(MenuController::class)->middleware(['auth'])->group(function()
     Route::post('/menus/{menu}/workout', 'workout')->name('workout');
     Route::get('/menus/{menu}', 'show')->name('show');
     Route::put('/menus/{menu}', 'update')->name('update');
+    Route::delete('menus/{menu}/reset', 'reset')->name('reset');
     Route::delete('/menus/{menu}', 'delete')->name('delete');
     Route::get('/menus/{menu}/edit', 'edit')->name('edit');
 });

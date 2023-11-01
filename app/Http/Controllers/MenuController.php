@@ -266,6 +266,13 @@ class MenuController extends Controller
         $menu->fill($input_menu)->save();
         return redirect('/menus/' . $menu->id);
     }
+    
+    public function reset(Menu $menu, Result $result)
+    {
+        $result->where('user_id', '=', Auth::id())
+        ->where('menu_id', '=', $menu->id)->delete();
+        return redirect('/menus/' . $menu->id);
+    }
 
     /**
      * Remove the specified resource from storage.
