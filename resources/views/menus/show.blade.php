@@ -86,25 +86,37 @@
             <a href="/menus/{{$menu->id}}/edit">edit</a>
         </div>
         <div class="reset">
-            <a href="">reset</a>
+            <form  action="/menus/{{$menu->id}}/reset" id="form_{{$menu->id}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="button" onclick="resetResults({{$menu->id}})">reset</button>
+            </form>
         </div>
         <div class="delete">
             <form action="/menus/{{$menu->id}}" id="form_{{$menu->id}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="button" onclick="deletePost({{$menu->id}})">delete</button>
+                <button type="button" onclick="deleteMenu({{$menu->id}})">delete</button>
             </form>
         </div>
         
         
         <script>
-                function deletePost(id) {
+                function deleteMenu(id) {
                     'use strict'//最新の方法で動作させるときに書くコード
+                    
                     
                     if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
                         document.getElementById(`form_${id}`).submit();
                         //${}はjavascriptの変数の書き方
                         //deleteメソットを持つformにsubmitすることで
+                    }
+                }
+                
+                function resetResults(id) {
+                    'use strict'
+                    if (confirm('本当にリセットしますか？')) {
+                        document.getElementById(`form_${id}`).submit();
                     }
                 }
         </script>
