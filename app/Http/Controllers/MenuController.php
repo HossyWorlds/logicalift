@@ -213,6 +213,7 @@ class MenuController extends Controller
         
         //viewを返す
         return view('menus.show')->with([
+            'user_id' => $user_id,
             'menu' => $myMenu,
             'latestResults' => $latestResults,
             'maxResult' => $maxResult,
@@ -272,6 +273,12 @@ class MenuController extends Controller
         $result->where('user_id', '=', Auth::id())
         ->where('menu_id', '=', $menu->id)->delete();
         return redirect('/menus/' . $menu->id);
+    }
+    
+    public function remove(Menu $menu)
+    {
+        $menu->sharedWithUsers()->detach(Auth::id());
+        return redirect('/');
     }
 
     /**
