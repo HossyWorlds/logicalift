@@ -36,6 +36,7 @@ Route::controller(MenuController::class)->middleware(['auth'])->group(function()
     Route::get('/menus/{menu}', 'show')->name('show');
     Route::put('/menus/{menu}', 'update')->name('update');
     Route::delete('menus/{menu}/reset', 'reset')->name('reset');
+    Route::post('/menus/{menu}/remove', 'remove')->name('remove');
     Route::delete('/menus/{menu}', 'delete')->name('delete');
     Route::get('/menus/{menu}/edit', 'edit')->name('edit');
 });
