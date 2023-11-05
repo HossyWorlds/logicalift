@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Menu;
+use App\Models\User;
+use App\Models\Result;
+
+use App\Http\Requests\MenuRequest;
+use App\Http\Requests\ResultRequest;
+
 
 class CategoryController extends Controller
 {
@@ -14,9 +22,43 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category, Request $request)
     {
         //
+        $keyword = $request->input('keyword');
+        
+        //大前提としてメニューに表示できるのは
+        //自分のオリジナルメニューと共有メニュー。
+        $user_id = Auth::id();
+        //$menusQuery = Menu::query()->where('user_id', $user_id);
+        //dd($menus);
+        $menusQuery = Menu::query()
+        ->where('user_id', $user_id)
+        ->where('category_id', $category->id);
+        
+        //$sharedMenusQuery = User::find($user_id)->sharingMenus()
+        //->where('sharing', 1);
+        //dd($sharedMenusQuery);
+        $sharedMenusQuery = User::find($user_id)
+        ->sharingMenus()
+        ->where('sharing', 1)
+        ->where('category_id', $category->id);
+        
+        
+        if (!empty($keyword)) {
+            $menusQuery->where('name', 'LIKE', "%{$keyword}%");
+            $sharedMenusQuery->where('name', 'LIKE', "%{$keyword}%");
+        }
+        
+        $menus = $menusQuery->get();
+        $sharedMenus = $sharedMenusQuery->get();
+        //dd($sharedMenus);
+        
+        return view('categories.index')->with([
+            'menus' => $menus,
+            'sharedMenus' => $sharedMenus,
+            'keyword' => $keyword,
+            ]);
     }
 
     /**

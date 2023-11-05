@@ -13,4 +13,5 @@ class Category extends Model
     public function menus(){
         return $this->hasMany(Menu::class);
     }
+    
 }
