@@ -8,12 +8,14 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        
     </head>
     <body>
         <h1>addMenu</h1>
         
+        <!--メニューを追加-->
         <div class="addMenu">
-            <h2>共有メニュー</h2>
+            <h2 class="text-blue-500">共有メニュー</h2>
             <p>…ほかのユーザーが行っているメニューを追加できます。</p>
             <div class="selectCategory">
                 <P>カテゴリー選択</P>

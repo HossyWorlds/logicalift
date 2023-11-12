@@ -1,0 +1,18 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/*#9CA300　ナイスな緑*/
+
+.searchFor{
+    color: #9CA39D;
+}
+
+.menusList{
+    color: white;
+}
+
+.header{
+    background-color: lime;
+    
+}
