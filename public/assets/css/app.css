@@ -2,17 +2,27 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/*#9CA300　ナイスな緑*/
+body{
+    color:white;
+    
+}
+
+
 
 .searchFor{
     color: #9CA39D;
 }
 
-.menusList{
-    color: white;
-}
-
 .header{
     background-color: lime;
     
+}
+
+.more-btn{
+    background-color:lime;
+    color: #fff;
+    padding: 10px;
+    margin: 0 auto;
+    width: 200px;
+    text-align:center;
 }
