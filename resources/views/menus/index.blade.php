@@ -12,7 +12,10 @@
         <!--css-->
         <link rel="stylesheet" href="{{asset('/assets/css/app.css')}}"/>
         
-    </head>
+        <!--jQuery-->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="/assets/js/app.js"></script>
+        
     <body>
     <x-app-layout>
         <x-slot name="header">
@@ -33,32 +36,37 @@
             </div>
             
             <!--menus-->
-            <div class="menusList">
+            <div class="">
                 <!--オリジナルメニュー-->
                 <div class="">
                     <p class="font-semibold text-xl leading-tight">オリジナルメニュー</p>
-                    @foreach ($menus as $menu)
-                    <a href="/menus/{{$menu->id}}">
-                        {{$menu->name}}
-                    </a>
-                    <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
-                    </a>
-                    @endforeach
-                    <p class="more-btn">もっと見る</p>
-                    <p>閉じる</p>
+                    <div class="menusList">
+                        @foreach ($menus as $menu)
+                        <a href="/menus/{{$menu->id}}">
+                            {{$menu->name}}
+                        </a>
+                        <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
+                        </a>
+                        @endforeach
+                    </div>
+                    <button class="more-btn">もっと見る</button>
+                    <button class="less-btn">閉じる</button>
                 </div>
                 <!--共有メニュー-->
                 <div class="sharedMenus">
                     <p class="font-semibold text-xl leading-tight">共有メニュー</p>
-                    @foreach ($sharedMenus as $sharedMenu)
-                    <a href="/menus/{{$sharedMenu->id}}">
-                        {{$sharedMenu->name}}
-                    </a>
-                    <a href="/categories/{{$sharedMenu->category->id}}">{{$sharedMenu->category->name}}<br>
-                    </a>
-                    @endforeach
-                    <p>もっと見る</p>
-                    <p>閉じる</p>
+                    <div class="menusList">
+                        @foreach ($sharedMenus as $sharedMenu)
+                        <a href="/menus/{{$sharedMenu->id}}">
+                            {{$sharedMenu->name}}
+                        </a>
+                        <a href="/categories/{{$sharedMenu->category->id}}">{{$sharedMenu->category->name}}<br>
+                        </a>
+                        @endforeach
+                    </div>
+                    
+                    <button class="more-btn">もっと見る</button>
+                    <button class="less-btn">閉じる</button>
                 </div>
                 
             </div>
@@ -71,8 +79,29 @@
         </div>
         
     </x-app-layout>
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
+    
+    <script>
+        const init = 5;
+        //追加表示数
+        const more = 3;
+        //初期表示数以降のリスト内容を非表示に
+        $(".menusList:nth-child(n+" + (init+1) + ")").hide();
+        //メニュー数がinit以下だったらmore-btnが要らないの
+        $(".menusList").filter(function(){
+            return $(this).find(".menuList").length <= init;
+        }).find(".more-btn").hide();
+        
+        //more-btnクリックで指定数表示
+        $(".more-btn").on("click",function{
+            let this_list = $(this).closest(".moreList");
+            this_list.find("menusList:hidden").slice(0,more).slideToggle();
+            
+            if(this_list.find("menusList:hidden").length == 0){
+            $(this).fadeOut();
+        })
+    </script>
+        
+    </head>
+    
     </body>
 </html>
