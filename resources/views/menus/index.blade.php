@@ -24,7 +24,7 @@
             </h2>
         </x-slot>
         
-        <div class="mainContents">
+        <div class="text-white">
             
             <!--検索-->
             <div class="searchFor">
