@@ -10,11 +10,11 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         
         <!--css-->
-        <link rel="stylesheet" href="{{asset('/assets/css/app.css')}}"/>
+        <link rel="stylesheet" href="/css/index.css" >
         
         <!--jQuery-->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="/assets/js/app.js"></script>
+        <script src="/assets/js/index.js"></script>
         
     <body>
     <x-app-layout>
