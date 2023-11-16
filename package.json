@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
+    "@vitejs/plugin-react": "^4.1.1",
     "alpinejs": "^3.4.2",
     "autoprefixer": "^10.4.16",
     "axios": "^1.1.2",
@@ -95,6 +96,8 @@
     "postcss-value-parser": "^4.2.0",
     "proxy-from-env": "^1.1.0",
     "queue-microtask": "^1.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "read-cache": "^1.0.0",
     "readdirp": "^3.6.0",
     "resolve": "^1.22.6",
