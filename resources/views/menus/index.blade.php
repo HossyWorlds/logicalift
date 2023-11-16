@@ -15,7 +15,12 @@
         <!--jQuery-->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script src="/assets/js/index.js"></script>
+        <!--<script src="resources/js/app.js"></script>-->
         
+        @viteReactRefresh
+        @vite(['resources/css/app.css', 'resources/js/app.jss'])
+    </head>
+    
     <body>
     <x-app-layout>
         <x-slot name="header">
@@ -101,7 +106,6 @@
         })
     </script>
         
-    </head>
     
     </body>
 </html>
