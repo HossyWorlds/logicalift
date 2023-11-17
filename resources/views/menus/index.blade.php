@@ -10,10 +10,11 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         
         <!--css-->
-        <link rel="stylesheet" href="/css/index.css" >
+        <link rel="stylesheet" href="{{asset('/css/index.css')}}"/>
         
-        @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+        
+        
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     
     <body>
@@ -25,7 +26,7 @@
             </h2>
         </x-slot>
         
-        <div class="text-white">
+        <div>
             
             <!--検索-->
             <div class="searchFor">
@@ -37,10 +38,10 @@
             </div>
             
             <!--menus-->
-            <div class="contents">
+            <div class="container">
                 <!--オリジナルメニュー-->
                 <div class="originalContents">
-                    <p class="font-semibold text-xl leading-tight">オリジナルメニュー</p>
+                    <p class="menuType">オリジナルメニュー</p>
                     <div class="originalMenu">
                         @foreach ($menus as $menu)
                         <li class="originalMenu-list">
@@ -58,23 +59,19 @@
                 </div>
                 <!--共有メニュー-->
                 <div class="sharedContents">
-                    <p class="font-semibold text-xl leading-tight">共有メニュー</p>
+                    <p class="menuType">共有メニュー</p>
                     <div class="sharedMenu">
                         @foreach ($sharedMenus as $sharedMenu)
                         <li class="sharedMenu-list">
-                            <a href="/menus/{{$sharedMenu->id}}">
+                            <button class="sharedMenus" href="/menus/{{$sharedMenu->id}}">
                                 {{$sharedMenu->name}}
-                            </a>
-                            <a href="/categories/{{$sharedMenu->category->id}}">
-                                {{$sharedMenu->category->name}}<br>
-                            </a>
+                            </button>
                         </li>
                         @endforeach
                     </div>
                     <button class="more-btn2">もっと見る</button>
                     <button class="close-btn2">閉じる</button>
                 </div>
-                
             </div>
             
             <!--メニュー追加-->
@@ -87,7 +84,5 @@
     </x-app-layout>
     
     <script src="{{ asset('/js/index.js')  }}"></script>
-    <script></script>
-        
     </body>
 </html>
