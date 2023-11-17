@@ -1,3 +1,7 @@
+$(function(){
+    alert('jquery')
+})
+
 $(function () {
     const originalMenus = $(".originalMenu-list").length
     const sharedMenus = $(".sharedMenu-list").length
