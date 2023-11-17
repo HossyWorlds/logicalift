@@ -1,22 +1,52 @@
-import './bootstrap';
-
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
-
-window.$ = window.jQuery = require('jquery');
-window.addEventListener('DOMContentLoaded', function(){
-    // 初期表示数
-    const init = 5;
-    //追加表示数
-    const more = 3;
-    //初期表示数以降のリスト内容を非表示に
+$(function () {
+    const originalMenus = $(".originalMenu-list").length
+    const sharedMenus = $(".sharedMenu-list").length
     
-    $("menusList li:nth-child(n+" + (init+1) + ")").hide();
+    $(".originalContents").each(function () {
+        let number = 3
+        let closeNumber = number - 1
+        if (originalMenus <= number) {
+            $(this).find(".more-btn1").hide()
+        }
+        $(this).find(".close-btn1").hide()
+        $(this).find("li:not(:lt("+ number +"))").hide()
+        // 両サイドに+がある理由は、""で包む際に変数も青色になってしまうから
+        $(".more-btn1").click(function () {
+            number += 3
+            $(this).parent().find("li:lt("+ number +")").slideDown()
+            if (originalMenus <= number) {
+                $(".more-btn1").hide()
+                $(".close-btn1").show()
+                $(".close-btn1").click(function () {
+                    $(this).parent().find("li:gt("+ closeNumber +")").slideUp()
+                    $(this).hide()
+                    $(".more-btn1").show()
+                })
+            }
+        })
+    })
     
-    //つづきは「https://mgmgblog.com/post-3374/」のリンク
-    /** jQueryの処理 */ 
-
-});
+    $(".sharedContents").each(function () {
+        let number = 3
+        let closeNumber = number - 1
+        if (sharedMenus <= number) {
+            $(this).find(".more-btn2").hide()
+        }
+        $(this).find(".close-btn2").hide()
+        $(this).find("li:not(:lt("+ number +"))").hide()
+        // 両サイドに+がある理由は、""で包む際に変数も青色になってしまうから
+        $(".more-btn2").click(function () {
+            number += 3
+            $(this).parent().find("li:lt("+ number +")").slideDown()
+            if (sharedMenus <= number) {
+                $(".more-btn2").hide()
+                $(".close-btn2").show()
+                $(".close-btn2").click(function () {
+                    $(this).parent().find("li:gt("+ closeNumber +")").slideUp()
+                    $(this).hide()
+                    $(".more-btn2").show()
+                })
+            }
+        })
+    })
+})
