@@ -13,11 +13,17 @@ body{
     
 }
 
-.more-btn{
+.more-btn1, .more-btn2{
     background-color:lime;
     color: #fff;
     padding: 10px;
     margin: 0 auto;
     width: 200px;
     text-align:center;
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        background-color: red;
+    }
 }

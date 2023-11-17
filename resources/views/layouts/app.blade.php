@@ -13,9 +13,12 @@
         
         <!--css-->
         <link rel="stylesheet" href="{{asset('/assets/css/app.css')}}"/>
+        
+        <!--jQuery-->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-900">

@@ -12,17 +12,13 @@
         <!--css-->
         <link rel="stylesheet" href="/css/index.css" >
         
-        <!--jQuery-->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="/assets/js/index.js"></script>
-        <!--<script src="resources/js/app.js"></script>-->
-        
         @viteReactRefresh
-        @vite(['resources/css/app.css', 'resources/js/app.jss'])
+        @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     </head>
     
     <body>
     <x-app-layout>
+        
         <x-slot name="header">
             <h2>
                 {{ __('TrainingMenus') }}
@@ -41,37 +37,42 @@
             </div>
             
             <!--menus-->
-            <div class="">
+            <div class="contents">
                 <!--オリジナルメニュー-->
-                <div class="">
+                <div class="originalContents">
                     <p class="font-semibold text-xl leading-tight">オリジナルメニュー</p>
-                    <div class="menusList">
+                    <div class="originalMenu">
                         @foreach ($menus as $menu)
-                        <a href="/menus/{{$menu->id}}">
-                            {{$menu->name}}
-                        </a>
-                        <a href="/categories/{{$menu->category->id}}">{{$menu->category->name}}<br>
-                        </a>
+                        <li class="originalMenu-list">
+                            <a href="/menus/{{$menu->id}}">
+                                {{$menu->name}}
+                            </a>
+                            <a href="/categories/{{$menu->category->id}}">
+                                {{$menu->category->name}}<br>
+                            </a>
+                        </li>
                         @endforeach
                     </div>
-                    <button class="more-btn">もっと見る</button>
-                    <button class="less-btn">閉じる</button>
+                    <button class="more-btn1">もっと見る</button>
+                    <button class="close-btn1">閉じる</button>
                 </div>
                 <!--共有メニュー-->
-                <div class="sharedMenus">
+                <div class="sharedContents">
                     <p class="font-semibold text-xl leading-tight">共有メニュー</p>
-                    <div class="menusList">
+                    <div class="sharedMenu">
                         @foreach ($sharedMenus as $sharedMenu)
-                        <a href="/menus/{{$sharedMenu->id}}">
-                            {{$sharedMenu->name}}
-                        </a>
-                        <a href="/categories/{{$sharedMenu->category->id}}">{{$sharedMenu->category->name}}<br>
-                        </a>
+                        <li class="sharedMenu-list">
+                            <a href="/menus/{{$sharedMenu->id}}">
+                                {{$sharedMenu->name}}
+                            </a>
+                            <a href="/categories/{{$sharedMenu->category->id}}">
+                                {{$sharedMenu->category->name}}<br>
+                            </a>
+                        </li>
                         @endforeach
                     </div>
-                    
-                    <button class="more-btn">もっと見る</button>
-                    <button class="less-btn">閉じる</button>
+                    <button class="more-btn2">もっと見る</button>
+                    <button class="close-btn2">閉じる</button>
                 </div>
                 
             </div>
@@ -85,27 +86,8 @@
         
     </x-app-layout>
     
-    <script>
-        const init = 5;
-        //追加表示数
-        const more = 3;
-        //初期表示数以降のリスト内容を非表示に
-        $(".menusList:nth-child(n+" + (init+1) + ")").hide();
-        //メニュー数がinit以下だったらmore-btnが要らないの
-        $(".menusList").filter(function(){
-            return $(this).find(".menuList").length <= init;
-        }).find(".more-btn").hide();
+    <script src="{{ asset('/js/index.js')  }}"></script>
+    <script></script>
         
-        //more-btnクリックで指定数表示
-        $(".more-btn").on("click",function{
-            let this_list = $(this).closest(".moreList");
-            this_list.find("menusList:hidden").slice(0,more).slideToggle();
-            
-            if(this_list.find("menusList:hidden").length == 0){
-            $(this).fadeOut();
-        })
-    </script>
-        
-    
     </body>
 </html>
