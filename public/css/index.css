@@ -5,6 +5,7 @@
     /*横スクロールを非表示*/
     color:white;
     font-family: Arial, sans-serif;
+    align-items: center;
 }
 
 .background{
@@ -19,17 +20,43 @@
     z-index: -1; /* コンテンツよりも背面に配置するため */
 }
 
-.searchFor{
-    color: #9CA39D;
+.header{
+    background-color:lime;
+    border-bottom: 3px solid rgba(26, 46, 5, 0.3); 
+    opacity:0.9;
+    /*position*/
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
-.header{
-    background-color: lime;
-    
+.title{
+    background-color: rgb(30, 41, 59);
+    border-bottom:solid;
+    border-bottom-color:#0F172A;
+    height:60px;
+    /*position*/
+    margin-top:70px;
 }
+
+.title_text{
+    text-align:left;
+    color:white;
+    font-size:x-large;
+    font-weight:bold;
+    padding: 10px 10%;
+}
+
+.searchFor{
+    color: #9CA39D;
+    padding: 10px 10%;
+}
+
 
 .container {
     padding: 20px 10%;
+    align-items: center;
 }
 
 .menuType {
@@ -40,33 +67,36 @@
 
 
 
-li {
-    list-style-type:none;
-    height:60px;
-    padding:10px;
-    margin-bottom:10px;
-    text-align:center;
+.sharedMenu_list, .originalMenu_list{
+    padding: 10px 0px;
+    height: 70px;
+    text-align: center;
+    margin: auto;
+}
+
+.sharedMenusButton, .originalMenusButton{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
     background-color: rgba(51, 65, 85, 0.5);
-}
-
-.sharedMenus{
-    background-color:black;
-    width:80%;
-    margin:auto;
+    
 }
 
 
-.more-btn1, .more-btn2{
-    background-color:lime;
+
+
+.more_btn1, .close_btn1, .more_btn2, .close_btn2, .createButton{
+    display:block;
     color: #fff;
     padding: 10px;
     margin: 0 auto;
     width: 200px;
     text-align:center;
+    align-items: center;
 }
 
 @media screen and (max-width: 480px) {
     .header {
-        background-color: red;
+        
     }
 }

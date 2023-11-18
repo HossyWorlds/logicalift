@@ -11,6 +11,13 @@
         
     </head>
     <body>
+    <x-app-layout>
+        <x-slot name="title">
+            <h2>
+                {{ __('Administrator') }}
+            </h2>
+        </x-slot>
+        
         <h1>addMenu</h1>
         
         <!--メニューを追加-->
@@ -83,5 +90,6 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        </x-app-layout>
     </body>
 </html>

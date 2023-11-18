@@ -20,14 +20,14 @@
     <body>
     <x-app-layout>
         
-        <x-slot name="header">
+        <x-slot name="title">
             <h2>
                 {{ __('TrainingMenus') }}
             </h2>
+            
         </x-slot>
         
-        <div>
-            
+        <div >
             <!--検索-->
             <div class="searchFor">
                 <form action="/" method="GET">
@@ -44,38 +44,35 @@
                     <p class="menuType">オリジナルメニュー</p>
                     <div class="originalMenu">
                         @foreach ($menus as $menu)
-                        <li class="originalMenu-list">
-                            <a href="/menus/{{$menu->id}}">
-                                {{$menu->name}}
-                            </a>
-                            <a href="/categories/{{$menu->category->id}}">
-                                {{$menu->category->name}}<br>
-                            </a>
-                        </li>
+                        <form class="originalMenu_list" action="/menus/{{$menu->id}}">
+                            <button class="originalMenusButton">
+                                {{$menu->name}}{{$menu->category->name}}<br>
+                            </button>
+                        </form>
                         @endforeach
                     </div>
-                    <button class="more-btn1">もっと見る</button>
-                    <button class="close-btn1">閉じる</button>
+                    <button class="more_btn1">もっと見る</button>
+                    <button class="close_btn1">閉じる</button>
                 </div>
                 <!--共有メニュー-->
                 <div class="sharedContents">
                     <p class="menuType">共有メニュー</p>
                     <div class="sharedMenu">
                         @foreach ($sharedMenus as $sharedMenu)
-                        <li class="sharedMenu-list">
-                            <button class="sharedMenus" href="/menus/{{$sharedMenu->id}}">
+                        <form class="sharedMenu_list" action="/menus/{{$sharedMenu->id}}">
+                            <button class="sharedMenusButton">
                                 {{$sharedMenu->name}}
                             </button>
-                        </li>
+                        </form>
                         @endforeach
                     </div>
-                    <button class="more-btn2">もっと見る</button>
-                    <button class="close-btn2">閉じる</button>
+                    <button class="more_btn2">もっと見る</button>
+                    <button class="close_btn2">閉じる</button>
                 </div>
             </div>
             
             <!--メニュー追加-->
-            <div class="text-white">
+            <div class="createButton">
                 <a href='/menus/admin'>メニューを追加する</a>
             </div>
             
