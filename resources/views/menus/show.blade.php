@@ -11,6 +11,13 @@
         
     </head>
     <body>
+    <x-app-layout>
+        <x-slot name="title">
+            <h2>
+                {{ $menu->name }}
+            </h2>
+        </x-slot>
+        
         <div class="toTrainingMenus">
             <a href="/">TrainingMenusへ</a>
         </div>
@@ -112,7 +119,7 @@
                 </form>
             </div>
         </div>
-        
+    </x-app-layout>
         
         
         <script>
@@ -141,5 +148,6 @@
                 }
             }
         </script>
+    
     </body>
 </html>

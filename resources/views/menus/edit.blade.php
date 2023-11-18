@@ -1,5 +1,11 @@
 <!-- body内だけを表示しています。 -->
 <body>
+<x-app-layout>
+    <x-slot name="title">
+        <h2>
+            {{ __('Editor') }}
+        </h2>
+    </x-slot>
     <h1 class="title">編集画面</h1>
     <div class="content">
         <form action="/menus/{{ $menu->id }}" method="POST">
@@ -31,4 +37,5 @@
             <a href="/menus/{{ $menu->id }}">戻る</a>
         </div>
     </div>
+</x-app-layout>
 </body>

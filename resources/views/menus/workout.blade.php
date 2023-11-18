@@ -11,8 +11,15 @@
         
     </head>
     <body>
+    <x-app-layout>
+        <x-slot name="title">
+            <h2>
+                {{ __('WellDone!!') }}
+            </h2>
+        </x-slot>
         <h1>WellDone</h1>
         
         <a href="/menus/{{$menu->id}}">continue</a>
+    </x-app-layout>
     </body>
 </html>
