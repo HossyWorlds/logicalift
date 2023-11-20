@@ -88,6 +88,9 @@
                 <p>{{$latestResult->updated_at}}&nbsp;&nbsp;&nbsp;{{$latestResult->weight}}&nbsp;{{$latestResult->reps}}<br></P>
             @endforeach
         </div>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
         <div class="">
             @if ($menu->user_id == $user_id)
                 <div class="edit">

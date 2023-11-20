@@ -37,16 +37,16 @@ $(function () {
             $(this).find(".more_btn2").hide()
         }
         $(this).find(".close_btn2").hide()
-        $(this).find("li:not(:lt("+ number +"))").hide()
+        $(this).find("form:not(:lt("+ number +"))").hide()
         // 両サイドに+がある理由は、""で包む際に変数も青色になってしまうから
         $(".more_btn2").click(function () {
             number += 3
-            $(this).parent().find("li:lt("+ number +")").slideDown()
+            $(this).parent().find("form:lt("+ number +")").slideDown()
             if (sharedMenus <= number) {
                 $(".more_btn2").hide()
                 $(".close_btn2").show()
                 $(".close_btn2").click(function () {
-                    $(this).parent().find("li:gt("+ closeNumber +")").slideUp()
+                    $(this).parent().find("form:gt("+ closeNumber +")").slideUp()
                     $(this).hide()
                     $(".more_btn2").show()
                 })
