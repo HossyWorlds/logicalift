@@ -89,7 +89,7 @@
             @endforeach
         </div>
         <div>
-            <canvas id="myChart"></canvas>
+            <canvas id="bubbleChart"></canvas>
         </div>
         <div class="">
             @if ($menu->user_id == $user_id)

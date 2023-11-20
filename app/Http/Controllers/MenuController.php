@@ -211,6 +211,12 @@ class MenuController extends Controller
             $sharing = "共有トレーニング";
         }
         
+        //バブルチャート
+        $bubbleResults = Result::where('user_id', auth()->user()->id)
+        ->with('menu') //MenuとResult関連付け
+        ->orderBy('created_at', 'desc')
+        ->get();
+        
         //viewを返す
         return view('menus.show')->with([
             'user_id' => $user_id,
@@ -220,6 +226,7 @@ class MenuController extends Controller
             'newWeight' => $newWeight,
             'advice' => $advice,
             'sharing' => $sharing,
+            'bubbleResults' => $bubbleResults,
         ]);
     }
     
