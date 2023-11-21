@@ -161,7 +161,7 @@
                     data: data.map(result => ({
                         x: result.weight,
                         y: result.reps,
-                        r: new Date(result.created_at).getTime()
+                        r: 10
                         //もしこれがうまくいかなかったら数値の個数に応じてrの値を定める
                     })),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -177,11 +177,17 @@
                     scales: {
                         x: {
                             type: 'linear',
-                            position: 'bottom'
+                            position: 'bottom',
+                            ticks: {
+                                stepSize: 0.5
+                            }
                         },
                         y: {
                             type: 'linear',
-                            position: 'left'
+                            position: 'left',
+                            ticks: {
+                                stepSize: 1.0
+                            }
                         }
                     }
                 }

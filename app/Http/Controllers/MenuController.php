@@ -212,8 +212,8 @@ class MenuController extends Controller
         }
         
         //バブルチャート
-        $bubbleResults = Result::where('user_id', auth()->user()->id)
-        ->with('menu') //MenuとResult関連付け
+        $bubbleResults = Result::where('user_id', Auth::id())
+        ->where('menu_id', $menu->id) //MenuとResult関連付け
         ->orderBy('created_at', 'desc')
         ->get();
         
