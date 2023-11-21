@@ -150,7 +150,44 @@
                     document.getElementById(`form_${id}`).submit();
                 }
             }
+            
+            // bubbleChart
+            var ctx = document.getElementById("bubbleChart").getContext("2d");
+            var data = @json($bubbleResults);
+            
+            var chartData = {
+                datasets: [{
+                    label: 'Bubble Chart',
+                    data: data.map(result => ({
+                        x: result.weight,
+                        y: result.reps,
+                        r: new Date(result.created_at).getTime()
+                        //もしこれがうまくいかなかったら数値の個数に応じてrの値を定める
+                    })),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            };
+            
+            var bubbleChart = new Chart(ctx, {
+                type: 'bubble',
+                data: chartData,
+                options: {
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom'
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'left'
+                        }
+                    }
+                }
+            });
         </script>
-    
+        
+        
     </body>
 </html>
