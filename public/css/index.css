@@ -21,7 +21,7 @@
 }
 
 .header{
-    background-color:lime;
+    background-color:white;
     border-bottom: 3px solid rgba(26, 46, 5, 0.3); 
     opacity:0.9;
     /*position*/
@@ -42,7 +42,7 @@
 
 .title_text{
     text-align:left;
-    color:white;
+    color:lime;
     font-size:x-large;
     font-weight:bold;
     padding: 10px 10%;
@@ -56,8 +56,14 @@
 
 .container {
     padding: 20px 10%;
-    align-items: center;
 }
+.latestResult {
+    padding:0 10%;
+}
+
+/*.chart {*/
+/*    background-color: white;*/
+/*}*/
 
 .menuType {
     text-align:center;
