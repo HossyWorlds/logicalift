@@ -27,7 +27,7 @@
             
         </x-slot>
         
-        <div >
+        <div>
             <!--検索-->
             <div class="searchFor">
                 <form action="/" method="GET">

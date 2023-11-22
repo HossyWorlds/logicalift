@@ -1,6 +1,6 @@
 <x-app-layout class="">
     <x-slot name="title">
-        <h2 class="title_text">
+        <h2>
             {{ __('Friends') }}
         </h2>
     </x-slot>
