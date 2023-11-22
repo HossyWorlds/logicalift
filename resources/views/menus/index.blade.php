@@ -54,6 +54,70 @@
                     <button class="more_btn1">もっと見る</button>
                     <button class="close_btn1">閉じる</button>
                 </div>
+                <!--テスト-->
+                <div class="originalContents">
+                    <p class="menuType">オリジナルメニュー</p>
+                    <div>
+                        <p>胸</p>
+                        @foreach ($menus->where('category_id', 1) as $menu)
+                        <form class="originalMenu_list" action="/menus/{{$menu->id}}">
+                            <button class="originalMenusButton">
+                                {{$menu->name}}<br>
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
+                    <div>
+                        <p>背中</p>
+                        @foreach ($menus->where('category_id', 2) as $menu)
+                        <form class="originalMenu_list" action="/menus/{{$menu->id}}">
+                            <button class="originalMenusButton">
+                                {{$menu->name}}<br>
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
+                    <div>
+                        <p>肩</p>
+                        @foreach ($menus->where('category_id', 3) as $menu)
+                        <form class="originalMenu_list" action="/menus/{{$menu->id}}">
+                            <button class="originalMenusButton">
+                                {{$menu->name}}<br>
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
+                    <div>
+                        <p>腕</p>
+                        @foreach ($menus->where('category_id', 4) as $menu)
+                        <form class="originalMenu_list" action="/menus/{{$menu->id}}">
+                            <button class="originalMenusButton">
+                                {{$menu->name}}<br>
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
+                    <div>
+                        <p>脚</p>
+                        @foreach ($menus->where('category_id', 5) as $menu)
+                        <form class="originalMenu_list" action="/menus/{{$menu->id}}">
+                            <button class="originalMenusButton">
+                                {{$menu->name}}<br>
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
+                    <div>
+                        <p>腹</p>
+                        @foreach ($menus->where('category_id', 6) as $menu)
+                        <form class="originalMenu_list" action="/menus/{{$menu->id}}">
+                            <button class="originalMenusButton">
+                                {{$menu->name}}<br>
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
+                </div>
                 <!--共有メニュー-->
                 <div class="sharedContents">
                     <p class="menuType">共有メニュー</p>

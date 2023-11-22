@@ -94,7 +94,17 @@
 }
 
 
-.more_btn1, .close_btn1, .more_btn2, .close_btn2, .createButton{
+.more_btn1, .close_btn1, .more_btn2, .close_btn2{
+    display:block;
+    color: #9CA39D;
+    padding: 10px;
+    margin: 0 auto;
+    width: 200px;
+    text-align:center;
+    align-items: center;
+}
+
+.createButton{
     display:block;
     color: #fff;
     padding: 10px;

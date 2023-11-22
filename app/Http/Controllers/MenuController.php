@@ -29,11 +29,11 @@ class MenuController extends Controller
         //大前提としてメニューに表示できるのは
         //自分のオリジナルメニューと共有メニュー。
         $user_id = Auth::id();
-        $menusQuery = Menu::query()->where('user_id', $user_id);
+        $menusQuery = Menu::query()->orderBy('category_id')->where('user_id', $user_id);
         //dd($menus);
         
         $sharedMenusQuery = User::find($user_id)->sharingMenus()
-        ->where('sharing', 1);
+        ->orderBy('category_id')->where('sharing', 1);
         //dd($sharedMenusQuery);
         
         if (!empty($keyword)) {
