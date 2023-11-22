@@ -94,3 +94,16 @@ $(".originalContents").each(function () {
 $(".sharedContents").each(function () {
     moreOrCloseIndex($(this), ".sharedMenu_list", ".more_btn2", ".close_btn2")
 });
+
+// for文を組み合わせて関数の引数を指定
+for (var i = 1; i < 7; i++) {
+    $(".originalContents").each(function () {
+    moreOrCloseIndex($(this), ".originalMenu_list"+i, ".more_btn"+i, ".close_btn"+i)
+});
+}
+
+for (var i = 1; i < 7; i++) {
+    $(".sharedContents").each(function () {
+    moreOrCloseIndex($(this), ".sharedMenu_list"+i, ".more_btn"+i, ".close_btn"+i)
+});
+}

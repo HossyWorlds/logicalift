@@ -57,6 +57,8 @@
 .container {
     padding: 20px 5%;
 }
+
+
 .latestResult {
     padding:0 5%;
 }
@@ -80,6 +82,33 @@
     margin: auto;
 }
 
+.category_name{
+    border-bottom: 3px solid lime;
+}
+
+.originalMenu_list1, .originalMenu_list2, .originalMenu_list3, 
+.originalMenu_list4, .originalMenu_list5, .originalMenu_list6,
+.sharedMenu_list1, .sharedMenu_list2, .sharedMenu_list3, 
+.sharedMenu_list4, .sharedMenu_list5, .sharedMenu_list6
+{
+    padding: 10px 0px;
+    height: 70px;
+    text-align: center;
+    margin: auto;
+}
+
+.more_btn1, .close_btn1, .more_btn2, .close_btn2, .more_btn3, .close_btn3,
+.more_btn4, .close_btn4, .more_btn5, .close_btn5, .more_btn6, .close_btn6
+{
+    display:block;
+    color: #9CA39D;
+    padding: 10px;
+    margin: 0 auto;
+    width: 200px;
+    text-align:center;
+    align-items: center;
+}
+
 .sharedMenusButton, .originalMenusButton{
     height: 100%;
     width: 100%;
@@ -91,17 +120,6 @@
 .weight input,
 .repetition input {
     color: lime;  /* 入力欄の文字色をlimeに設定 */
-}
-
-
-.more_btn1, .close_btn1, .more_btn2, .close_btn2{
-    display:block;
-    color: #9CA39D;
-    padding: 10px;
-    margin: 0 auto;
-    width: 200px;
-    text-align:center;
-    align-items: center;
 }
 
 .createButton{
