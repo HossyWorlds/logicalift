@@ -22,7 +22,19 @@
         
         <div>
             <div class="container">
+                <!--Advice-->
+                <div class="advice">
+                    <p>
+                        {{$advice ?? ''}}
+                    </p>
+                </div>
+                <!--MenuInfo-->
                 <div class="menuInfo">
+                    <div class="yourBest">
+                        <p>
+                            最近のあなたのベスト：{{$maxResult->weight ?? 'データなし'}}&nbsp;{{$maxResult->reps ?? ''}}
+                        </p>
+                    </div>
                     <div class="category">
                         <p>
                             部位：{{$menu->category->name}}
@@ -33,36 +45,16 @@
                             ステップアップの間隔: {{$menu->plus_weight}}
                         </p>
                     </div>
-                    <!--ほかにも必要なことあれば-->
-                </div>
-                
-                
-                <div class="advice">
-                    <p>
-                        {{$advice ?? ''}}
-                    </p>
-                </div>
-                
-                <div class="yourBest">
-                    <p>
-                        最近のあなたのベスト
-                    </p>
-                    <p>
-                        {{$maxResult->weight ?? 'データなし'}}&nbsp;{{$maxResult->reps ?? ''}}
-                    </p>
-                </div>
-                
-                    
-                <div class="newWeight">
-                    <p>
-                        次の重さ
-                    </p>
-                    <p>
-                        {{$newWeight ?? 'データなし'}}
-                    </p>
-                </div>
-                <div class="sharingOrNot">
-                    {{$sharing}}
+                    <div class="newWeight">
+                        <p>
+                            次の重さ：{{$newWeight ?? 'データなし'}}
+                        </p>
+                    </div>
+                    <div class="sharingOrNot">
+                        <p>
+                            MenuType：{{$sharing}}
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="training">
@@ -78,38 +70,6 @@
                         </div>
                         <input type="submit" value="goToWorkout"/>
                     </form>
-                </div>
-                
-                <div>
-                    @if ($menu->user_id == $user_id)
-                        <div class="edit">
-                            <a href="/menus/{{$menu->id}}/edit">edit</a>
-                        </div>
-                        @if ($menu->sharing == 0)
-                            <div class="delete">
-                                <form action="/menus/{{$menu->id}}" id="form_{{$menu->id}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" onclick="deleteMenu({{$menu->id}})">delete</button>
-                                </form>
-                            </div>
-                        @else
-                        @endif
-                    @else
-                        <div class="remove">
-                            <form action="/menus/{{$menu->id}}/remove" id="form_{{$menu->id}}" method="post">
-                                @csrf
-                                <button type="button" onclick="removeMenu({{$menu->id}})">remove</button>
-                            </form>
-                        </div>
-                    @endif
-                    <div class="reset">
-                        <form action="/menus/{{$menu->id}}/reset" id="form_{{$menu->id}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="button" onclick="resetResults({{$menu->id}})">reset</button>
-                        </form>
-                    </div>
                 </div>
             </div>
             
@@ -128,6 +88,39 @@
                     @endforeach
                 </div>
             </div>
+            <!--deleteAndRemoveAndReset-->
+            <div class="container">
+                @if ($menu->user_id == $user_id)
+                    <div class="edit">
+                        <a href="/menus/{{$menu->id}}/edit">edit</a>
+                    </div>
+                    @if ($menu->sharing == 0)
+                        <div class="delete">
+                            <form action="/menus/{{$menu->id}}" id="form_{{$menu->id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" onclick="deleteMenu({{$menu->id}})">delete</button>
+                            </form>
+                        </div>
+                    @else
+                    @endif
+                @else
+                    <div class="remove">
+                        <form action="/menus/{{$menu->id}}/remove" id="form_{{$menu->id}}" method="post">
+                            @csrf
+                            <button type="button" onclick="removeMenu({{$menu->id}})">remove</button>
+                        </form>
+                    </div>
+                @endif
+                <div class="reset">
+                    <form action="/menus/{{$menu->id}}/reset" id="form_{{$menu->id}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="button" onclick="resetResults({{$menu->id}})">reset</button>
+                    </form>
+                </div>
+            </div>
+            
         </div>
         
     </x-app-layout>

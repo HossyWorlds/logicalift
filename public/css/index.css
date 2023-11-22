@@ -45,20 +45,20 @@
     color:lime;
     font-size:x-large;
     font-weight:bold;
-    padding: 10px 10%;
+    padding: 10px 5%;
 }
 
 .searchFor{
     color: #9CA39D;
-    padding: 10px 10%;
+    padding: 10px 5%;
 }
 
 
 .container {
-    padding: 20px 10%;
+    padding: 20px 5%;
 }
 .latestResult {
-    padding:0 10%;
+    padding:0 5%;
 }
 
 /*.chart {*/
@@ -88,7 +88,10 @@
     
 }
 
-
+.weight input,
+.repetition input {
+    color: lime;  /* 入力欄の文字色をlimeに設定 */
+}
 
 
 .more_btn1, .close_btn1, .more_btn2, .close_btn2, .createButton{
