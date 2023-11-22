@@ -24,4 +24,7 @@
             </div>
         </div>
     </div>
+    <!--bubbleChart-->
+    
+    
 </x-app-layout>

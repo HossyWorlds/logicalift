@@ -88,9 +88,11 @@
                 <p>{{$latestResult->updated_at}}&nbsp;&nbsp;&nbsp;{{$latestResult->weight}}&nbsp;{{$latestResult->reps}}<br></P>
             @endforeach
         </div>
+        <!--bubbleChart-->
         <div>
             <canvas id="bubbleChart"></canvas>
         </div>
+        
         <div class="">
             @if ($menu->user_id == $user_id)
                 <div class="edit">
@@ -157,7 +159,7 @@
             
             var chartData = {
                 datasets: [{
-                    label: 'Bubble Chart',
+                    label: 'あなた',
                     data: data.map(result => ({
                         x: result.weight,
                         y: result.reps,
