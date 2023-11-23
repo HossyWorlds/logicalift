@@ -29,14 +29,15 @@
         
         <div>
             <!--検索-->
-            <div class="searchFor">
-                <form action="/" method="GET">
-                    @csrf
-                    <input type="text" name="keyword" value="{{ $keyword }}">
-                    <input type="submit" value="検索">
-                </form>
+            <div class="container">
+                <div class="searchFor">
+                    <form action="/" method="GET">
+                        @csrf
+                        <input type="text" name="keyword" value="{{ $keyword }}">
+                        <input type="submit" value="検索">
+                    </form>
+                </div>
             </div>
-            
             <!--menus-->
             <div class="container">
                 <!--オリジナルメニュー-->
@@ -78,7 +79,7 @@
             </div>
             
             <!--メニュー追加-->
-            <div class="createButton">
+            <div class="goToAdminButton">
                 <a href='/menus/admin'>メニューを追加する</a>
             </div>
             
