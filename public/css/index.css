@@ -50,7 +50,6 @@
 
 .searchFor{
     color: #9CA39D;
-    padding: 10px 5%;
 }
 
 
@@ -58,12 +57,16 @@
     padding: 20px 5%;
 }
 
-.originalContents, .sharedContents{
+.originalContents, .sharedContents,
+.addMenu, .createMenu
+{
     z-index: 1;
     background-color: rgb(30, 41, 54);
 }
 
-.sharedContents{
+.sharedContents,
+.addMenu, .createMenu
+{
     margin-top: 40px;
 }
 
@@ -76,19 +79,12 @@
 /*    background-color: white;*/
 /*}*/
 
-.menuType {
+.menuType,
+.container_title
+{
     text-align:center;
     font-size:x-large;
     font-weight:bold;
-}
-
-
-
-.sharedMenu_list, .originalMenu_list{
-    padding: 10px 0px;
-    height: 70px;
-    text-align: center;
-    margin: auto;
 }
 
 .category_name{
@@ -126,12 +122,16 @@
     
 }
 
+.create input,
+.plus_weight input{
+    color:black;
+}
 .weight input,
 .repetition input {
     color: lime;  /* 入力欄の文字色をlimeに設定 */
 }
 
-.createButton{
+.goToAdminButton{
     display:block;
     color: #fff;
     padding: 10px;
