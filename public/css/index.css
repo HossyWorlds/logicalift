@@ -58,6 +58,15 @@
     padding: 20px 5%;
 }
 
+.originalContents, .sharedContents{
+    z-index: 1;
+    background-color: rgb(30, 41, 54);
+}
+
+.sharedContents{
+    margin-top: 40px;
+}
+
 
 .latestResult {
     padding:0 5%;
@@ -83,7 +92,7 @@
 }
 
 .category_name{
-    border-bottom: 3px solid lime;
+    border-bottom: 3px solid rgba(0, 255, 0, 0.1);
 }
 
 .originalMenu_list1, .originalMenu_list2, .originalMenu_list3, 
