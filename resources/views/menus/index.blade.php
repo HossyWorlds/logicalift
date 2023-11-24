@@ -12,8 +12,6 @@
         <!--css-->
         <link rel="stylesheet" href="{{asset('/css/index.css')}}"/>
         
-        
-        
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     
@@ -79,9 +77,9 @@
             </div>
             
             <!--メニュー追加-->
-            <div class="goToAdminButton">
-                <a href='/menus/admin'>メニューを追加する</a>
-            </div>
+            <form action="/menus/admin">
+                <button class="goToAdminButton">メニューを追加する</button>
+            </form>
             
         </div>
         
