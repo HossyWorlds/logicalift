@@ -30,17 +30,19 @@
                 <h2 class="container_title">共有メニュー</h2>
                 <p>…他のユーザーが行っている”共有メニュー”を追加できます。</p>
                 <div class="selectCategory">
-                    <P>カテゴリー選択</P>
+                    <P>カテゴリーを選択しメニューを絞り込もう</P>
                     <form action="/menus/admin" method="GET">
                         @foreach($categories as $category)
                         <input type="radio" name="category" value="{{$category->id}}">
                         <label>{{$category->name}}<br></label>
                         @endforeach
-                        <input type="submit" value="絞り込み"/>
+                        <div class="narrowDawn">
+                            <input type="submit" value="絞り込む"/>
+                        </div>
                     </form>
                 </div>
                 <div class="searchForMenuInTheCategory">
-                    <p>そのカテゴリーの中でメニューを選択する</p>
+                    <p>そのカテゴリーの中でメニューを選択しよう</p>
                     <div class="searchForMenu">
                         <form action="/menus/admin" method="GET">
                             <!--@csrf-->
@@ -49,16 +51,21 @@
                                 <input type="submit" value="検索">
                             </div>
                         </form>
-                        <form action="/menus/add" method="POST">
+                        <form class="sharedContents_a" action="/menus/add" method="POST">
                             @csrf
                             @foreach ($sharedMenus as $sharedMenu)
-                            <input type="radio" name="sharedMenu" value="{{$sharedMenu->id}}"/>
-                            <label>{{$sharedMenu->name}}{{$sharedMenu->category->name}}<br></label>
+                            <div class="sharedMenu_list_a">
+                                <input type="radio" name="sharedMenu" value="{{$sharedMenu->id}}"/>
+                                <label>{{$sharedMenu->name}}{{$sharedMenu->category->name}}<br></label>
+                            </div>
                             @endforeach
-                            <input type="submit" value="add"/>
+                            <button class="more_btn">もっと見る</button>
+                            <button class="close_btn">閉じる</button>
+                            <div class="addMenuButton">
+                                <input type="submit" value="追加"/>
+                            </div>
                         </form>
                     </div>
-                    
                 </div>
             </div>
             
@@ -96,7 +103,9 @@
                         <input type="radio" name="menu[sharing]" value="0">
                         <label>no</label>
                     </div>
-                    <input type="submit" value="create"/>
+                    <div class="createMenuButton">
+                        <input type="submit" value="作成"/>
+                    </div>
                 </form>
             </div>
             <div class="footer">
@@ -105,5 +114,6 @@
         </div>        
         
         </x-app-layout>
+        <script src="{{ asset('/js/index.js')  }}"></script>
     </body>
 </html>

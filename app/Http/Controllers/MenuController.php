@@ -91,6 +91,12 @@ class MenuController extends Controller
         
         $loginUserId = Auth::id();
         
+        //バリデーション
+        $request->validate([
+            'sharedMenu' => 'required',
+        ]);
+        
+        // バリデーションが通過した場合の処理
         $selectedSharedMenuId = $request->sharedMenu;
         $selectedSharedMenu = Menu::find($selectedSharedMenuId);
         $selectedSharedMenu->sharedWithUsers()->attach($loginUserId);
