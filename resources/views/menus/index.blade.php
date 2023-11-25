@@ -52,6 +52,7 @@
                         </form>
                         @endforeach
                     </div>
+                    <p class="nothing{{$i}}">メニューなし</p>
                     <button class="more_btn{{$i}}">もっと見る</button>
                     <button class="close_btn{{$i}}">閉じる</button>
                     @endfor
@@ -70,6 +71,7 @@
                         </form>
                         @endforeach
                     </div>
+                    <p class="nothing{{$i}}">メニューなし</p>
                     <button class="more_btn{{$i}}">もっと見る</button>
                     <button class="close_btn{{$i}}">閉じる</button>
                     @endfor

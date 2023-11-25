@@ -104,7 +104,9 @@
 
 .more_btn1, .close_btn1, .more_btn2, .close_btn2, .more_btn3, .close_btn3,
 .more_btn4, .close_btn4, .more_btn5, .close_btn5, .more_btn6, .close_btn6,
-.more_btn, .close_btn
+.more_btn, .close_btn,
+.nothingg1, .nothing2, .nothing3, .nothing4, .nothing5, .nothing6,
+.nothing
 {
     display:block;
     color: #9CA39D;
@@ -123,18 +125,6 @@
     
 }
 
-
-
-
-.create input,
-.plus_weight input{
-    color:black;
-}
-.weight input,
-.repetition input {
-    color: lime;  /* 入力欄の文字色をlimeに設定 */
-}
-
 .goToAdminButton
 {
     display:block;
@@ -144,6 +134,15 @@
     width: 200px;
     text-align:center;
     align-items: center;
+}
+
+.name input,
+.plus_weight input{
+    color:black;
+}
+.weight input,
+.repetition input {
+    color: lime;  /* 入力欄の文字色をlimeに設定 */
 }
 
 .selectCategory,
@@ -158,9 +157,25 @@
     margin-top: 10px;
     background-color: rgba(0, 255, 0, 0.3);
 }
-.addMenuButton,
-.createMenuButton
+.addMenuButton{
+    margin: 5px auto;
+    width: 60px;
+    text-align: center;
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+.createForm
 {
+    margin-top: 10px
+}
+.defineCategory,
+.defineStepup,
+.shareOrNot
+{
+    margin-top: 5px;
+}
+
+.createMenuButton{
     margin: 15px auto;
     width: 100px;
     text-align: center;
