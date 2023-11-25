@@ -58,7 +58,7 @@
                 </div>
                 
                 <div class="training">
-                    <form action="/menus/{{$menu->id}}/workout" method="post">
+                    <form class="trainingForm" action="/menus/{{$menu->id}}/workout" method="post">
                         @csrf
                         <div class="weight">
                             <input type="number" name="result[weight]" step="0.1" value="{{ old('result.weight') }}">kg

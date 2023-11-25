@@ -9,6 +9,11 @@
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         
+        <!--css-->
+        <link rel="stylesheet" href="{{asset('/css/index.css')}}"/>
+        
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
     </head>
     <body>
     <x-app-layout>
@@ -51,20 +56,23 @@
                                 <input type="submit" value="検索">
                             </div>
                         </form>
-                        <form class="sharedContents_a" action="/menus/add" method="POST">
+                        <div class="sharedContents_a">
+                            <form action="/menus/add" method="POST">
                             @csrf
-                            @foreach ($sharedMenus as $sharedMenu)
-                            <div class="sharedMenu_list_a">
-                                <input type="radio" name="sharedMenu" value="{{$sharedMenu->id}}"/>
-                                <label>{{$sharedMenu->name}}{{$sharedMenu->category->name}}<br></label>
-                            </div>
-                            @endforeach
+                                @foreach ($sharedMenus as $sharedMenu)
+                                <div class="sharedMenu_list_a">
+                                    <input type="radio" name="sharedMenu" value="{{$sharedMenu->id}}"/>
+                                    <label>{{$sharedMenu->name}}{{$sharedMenu->category->name}}</label>
+                                    <div class="addMenuButton">
+                                        <input type="submit" value="追加"/>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </form>
+                            <p class="nothing">メニューなし</p>
                             <button class="more_btn">もっと見る</button>
                             <button class="close_btn">閉じる</button>
-                            <div class="addMenuButton">
-                                <input type="submit" value="追加"/>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,23 +81,23 @@
             <div class="createMenu">
                 <h2 class="container_title">オリジナルメニュー</h2>
                 <p>…自分で”オリジナルメニュー”を作成できます。</p>
-                <form action="/menus" method="POST">
+                <form class="createForm" action="/menus" method="POST">
                     @csrf
-                    <div>
-                        <h2>menuName?</h2>
-                        <dev class="create">
+                    <div class="createName">
+                        <h2>メニュー名はなに？</h2>
+                        <dev class="name">
                             <input type="text" name="menu[name]" placeholder="newMenu" value="{{old('menu.name')}}"/><br>
                             <p class="name_error" style="color:red">{{$errors->first('menu.name')}}</p>
                         </dev>
                     </div>
-                    <div class="category">
-                        <h2>menuCategory?</h2>
+                    <div class="defineCategory">
+                        <h2>カテゴリーはどれ？</h2>
                         @foreach($categories as $category)
                         <input type="radio" name="menu[category_id]" value="{{$category->id}}">
                         <label>{{$category->name}}<br></label>
                         @endforeach
                     </div>
-                    <div>
+                    <div class="defineStepup">
                         <h2>ステップアップの間隔は何kgごとにしますか？</h2>
                         <div class="plus_weight">
                             <input type="number" name="menu[plus_weight]" step="0.1" value="{{old('menu.plus_weight')}}"/>kg<br>
