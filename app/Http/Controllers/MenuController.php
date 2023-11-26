@@ -81,9 +81,6 @@ class MenuController extends Controller
             'sharedMenus' => $sharedMenus,
             'categories' => Category::all(),
             'keyword' => $keyword,
-            
-            //'selectedSharedMenuId' => $selectedSharedMenuId,
-            //'selectedSharedMenu' => $selectedSharedMenu,
             ]);
     }
     
@@ -236,7 +233,7 @@ class MenuController extends Controller
         ]);
     }
     
-    public function workout(ResultRequest $request, Menu $menu, Result $result)
+    public function done(ResultRequest $request, Menu $menu, Result $result)
     {
         $user_id = Auth::id();
         
@@ -246,8 +243,21 @@ class MenuController extends Controller
         $result->fill($input)->save();
         
         //return redirect('/menus/' . $menu->id);
-        return view('menus.workout')->with([
+        return view('menus.done')->with([
             'menu' => Menu::findOrFail($menu->id),
+            ]);
+    }
+    
+    public function memo(Menu $menu)
+    {
+        $user_id = Auth::id();
+        $menu_id = $menu->id;
+        $results = Result::where('user_id', $user_id)->where('menu_id', $menu_id)
+        ->orderBy('created_at', 'desc')->get();
+        
+        return view('menus.memo')->with([
+            'menu' => Menu::findOrFail($menu->id),
+            'results' => $results,
             ]);
     }
 

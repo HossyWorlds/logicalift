@@ -137,7 +137,8 @@
 }
 
 .name input,
-.plus_weight input{
+.plus_weight input,
+.memo input{
     color:black;
 }
 .weight input,
@@ -188,6 +189,68 @@
     margin-top: 20px;
     background-color: rgba(0, 255, 0, 0.1);
    
+}
+
+.adviceContents{
+    background-color: rgba(0, 255, 0, 0.1);
+    font-size: x-large;
+}
+
+.menuInfo{
+    margin-top:10px;
+}
+
+.training{
+    margin-top:10px;
+    z-index: 1;
+    background-color: rgb(30, 41, 54);
+}
+.traingHint{
+    font-size:large;
+    text-align:center;
+    color:lime;
+}
+.weight,.repetition{
+    margin-top:5px;
+    display:flex;
+    align-items:center;
+}
+.weight h1, .weight input, .weight h2,
+.repetition h1, .repetition input, .repetition h2 {
+    margin:0;
+}
+.weight h1,.weight h2,
+.repetition h1,.repetition h2{
+    width:100px;
+}
+.weight input, 
+.repetition input {
+    display:block;
+    margin :0 5px;
+}
+.weight_error, .reps_error{
+    text-align:center;
+}
+.memo{
+    margin-top:7px;
+}
+.memo input{
+    display:block;
+    margin:5px auto;
+    width:90%;
+    height:100px;
+}
+.memoHistory{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer; /* ポインターをリンク形状に変更 */
+    
+}
+.doneButton{
+    margin: 10px auto;
+    width: 100px;
+    text-align: center;
+    background-color: rgba(0, 255, 0, 0.3);
 }
 
 @media screen and (max-width: 480px) {

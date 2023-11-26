@@ -21,5 +21,10 @@
         
         <a href="/menus/{{$menu->id}}">continue</a>
     </x-app-layout>
+    
+    <style>
+        
+    </style>
+    
     </body>
 </html>

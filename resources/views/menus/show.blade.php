@@ -23,7 +23,7 @@
         <div>
             <div class="container">
                 <!--Advice-->
-                <div class="advice">
+                <div class="adviceContents">
                     <p>
                         {{$advice ?? ''}}
                     </p>
@@ -32,7 +32,7 @@
                 <div class="menuInfo">
                     <div class="yourBest">
                         <p>
-                            最近のあなたのベスト：{{$maxResult->weight ?? 'データなし'}}&nbsp;{{$maxResult->reps ?? ''}}
+                            最近のあなたのベスト：{{$maxResult->weight ?? 'データなし'}}kg&nbsp;{{$maxResult->reps ?? ''}}reps
                         </p>
                     </div>
                     <div class="category">
@@ -52,23 +52,36 @@
                     </div>
                     <div class="sharingOrNot">
                         <p>
-                            MenuType：{{$sharing}}
+                            メニュータイプ：{{$sharing}}
                         </p>
                     </div>
                 </div>
                 
                 <div class="training">
-                    <form class="trainingForm" action="/menus/{{$menu->id}}/workout" method="post">
+                    <p class="traingHint">トレーニング結果を記録し<br>Doneを押そう！</p>
+                    <form class="trainingForm" action="/menus/{{$menu->id}}/done" method="post">
                         @csrf
                         <div class="weight">
-                            <input type="number" name="result[weight]" step="0.1" value="{{ old('result.weight') }}">kg
-                            <p class="weight_error" style="color:red">{{$errors->first('result.weight')}}</p>
+                            <h1>重さ：</h1>
+                            <input type="number" name="result[weight]" step="0.1" value="{{ old('result.weight') }}">
+                            <h2>&nbsp;&nbsp;kg</h2>
                         </div>
+                        <p class="weight_error" style="color:red">{{$errors->first('result.weight')}}</p>
                         <div class="repetition">
-                            <input type="number" name="result[reps]" value="{{ old('result.reps') }}">reps
-                            <p class="reps_error" style="color:red">{{$errors->first('result.reps')}}</p>
+                            <h1>回数：</h1>
+                            <input type="number" name="result[reps]" value="{{ old('result.reps') }}">
+                            <h2>&nbsp;&nbsp;reps</h2>
                         </div>
-                        <input type="submit" value="goToWorkout"/>
+                        <p class="reps_error" style="color:red">{{$errors->first('result.reps')}}</p>
+                        <div class="memo">
+                            <h1>メモ・備考等あれば：</h1>
+                            <input name="result[memo]" value="{{ old('result.memo') }}">
+                            <a class="memoHistory" href="/menus/{{$menu->id}}/memo">過去に書いたやつ</a>
+                        </div>
+                        <div class="doneButton">
+                            <input type="submit" value="Done"/>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
@@ -84,7 +97,7 @@
                         LatestResult
                     </p>
                     @foreach ($latestResults as $latestResult)
-                        <p>{{$latestResult->updated_at}}&nbsp;&nbsp;&nbsp;{{$latestResult->weight}}&nbsp;{{$latestResult->reps}}<br></P>
+                        <p>{{$latestResult->updated_at}}&nbsp;&nbsp;&nbsp;{{$latestResult->weight}}kg&nbsp;{{$latestResult->reps}}reps<br></P>
                     @endforeach
                 </div>
             </div>

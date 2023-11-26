@@ -14,6 +14,7 @@ class Result extends Model
         'menu_id',
         'weight',
         'reps',
+        'memo',
         ];
     
     public function user(){
