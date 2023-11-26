@@ -33,8 +33,9 @@ Route::controller(MenuController::class)->middleware(['auth'])->group(function()
     Route::get('/menus/admin', 'admin')->name('admin');
     Route::post('/menus','store')->name('store');
     Route::post('/menus/add','add')->name('add');
-    Route::post('/menus/{menu}/workout', 'workout')->name('workout');
     Route::get('/menus/{menu}', 'show')->name('show');
+    Route::post('/menus/{menu}/done', 'done')->name('done');
+    Route::get('/menus/{menu}/memo', 'memo')->name('memo');
     Route::put('/menus/{menu}', 'update')->name('update');
     Route::delete('menus/{menu}/reset', 'reset')->name('reset');
     Route::post('/menus/{menu}/remove', 'remove')->name('remove');
