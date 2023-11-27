@@ -41,9 +41,9 @@
                         <input type="radio" name="category" value="{{$category->id}}">
                         <label>{{$category->name}}<br></label>
                         @endforeach
-                        <div class="narrowDawn">
+                        <button class="narrowDawn">
                             <input type="submit" value="絞り込む"/>
-                        </div>
+                        </button>
                     </form>
                 </div>
                 <div class="searchForMenuInTheCategory">
@@ -63,9 +63,9 @@
                                 <div class="sharedMenu_list_a">
                                     <input type="radio" name="sharedMenu" value="{{$sharedMenu->id}}"/>
                                     <label>{{$sharedMenu->name}}{{$sharedMenu->category->name}}</label>
-                                    <div class="addMenuButton">
+                                    <button class="addMenuButton">
                                         <input type="submit" value="追加"/>
-                                    </div>
+                                    </button>
                                 </div>
                                 @endforeach
                             </form>
@@ -111,14 +111,14 @@
                         <input type="radio" name="menu[sharing]" value="0">
                         <label>no</label>
                     </div>
-                    <div class="createMenuButton">
+                    <button class="createMenuButton">
                         <input type="submit" value="作成"/>
-                    </div>
+                    </button>
                 </form>
             </div>
-            <div class="footer">
-                <a href="/">戻る</a>
-            </div>
+            <form action="/">
+                <button class="backTo">戻る</button>
+            </form>
         </div>        
         
         </x-app-layout>

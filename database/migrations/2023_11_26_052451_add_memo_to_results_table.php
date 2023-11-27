@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('results', function (Blueprint $table) {
             //
-            $table->string('memo')->default(null);  //カラム追加
+            $table->string('memo')->nullable();  //カラム追加
         });
     }
 

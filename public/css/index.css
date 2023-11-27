@@ -153,12 +153,14 @@
 
 .narrowDawn
 {
+    display: block;
     margin-right: 80%;
     text-align: center;
     margin-top: 10px;
     background-color: rgba(0, 255, 0, 0.3);
 }
 .addMenuButton{
+    display: block;
     margin: 5px auto;
     width: 60px;
     text-align: center;
@@ -177,19 +179,14 @@
 }
 
 .createMenuButton{
+    display: block;
     margin: 15px auto;
     width: 100px;
     text-align: center;
     background-color: rgba(0, 255, 0, 0.3);
 }
 
-.footer{
-    margin-right: 80%;
-    text-align: center;
-    margin-top: 20px;
-    background-color: rgba(0, 255, 0, 0.1);
-   
-}
+
 
 .adviceContents{
     background-color: rgba(0, 255, 0, 0.1);
@@ -247,10 +244,37 @@
     
 }
 .doneButton{
+    display:block;
     margin: 10px auto;
     width: 100px;
     text-align: center;
     background-color: rgba(0, 255, 0, 0.3);
+}
+
+.backTo {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    /*border-radius: 5px;*/
+    cursor: pointer;
+}
+
+.authoritySetting{
+    display: flex;
+    flex-direction: column;
+}
+
+.editButton, .deleteButton, .removeButton, .resetButton{
+    margin-top: 15px;
+    margin-left: 0;
+    width: 70px;
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #fff;
+    padding: 0px 5px;
+    border: none;
+    /*border-radius: 5px;*/
+    cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
