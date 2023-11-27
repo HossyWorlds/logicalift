@@ -187,7 +187,7 @@ class MenuController extends Controller
             if ( $newReps >= $minReps ){
                 $newIntReps = (int) $newReps;
                 $advice = "あなたは{$newWeight}kgを{$newIntReps}回やる能力があります！
-                次の40kgに挑戦しましょう！";
+                次の{$newWeight}kgに挑戦しましょう！";
             } else {
                 $needReps = 40*(($newWeight/$weight)*(($minReps/40)+1)-1)-$reps;
                 if ($needReps>(int)$needReps){

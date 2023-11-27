@@ -29,7 +29,7 @@
                 </div>
                 <!--showへ-->
                 <form action="/menus/{{$menu->id}}">
-                    <button class="backToShow">戻る</button>
+                    <button class="backTo">戻る</button>
                 </form>
             </div>
         </div>
@@ -61,12 +61,5 @@
 }
 
 
-.backToShow {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 </style>

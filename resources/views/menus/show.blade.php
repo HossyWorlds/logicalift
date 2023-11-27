@@ -78,9 +78,9 @@
                             <input name="result[memo]" value="{{ old('result.memo') }}">
                             <a class="memoHistory" href="/menus/{{$menu->id}}/memo">過去に書いたやつ</a>
                         </div>
-                        <div class="doneButton">
+                        <button class="doneButton">
                             <input type="submit" value="Done"/>
-                        </div>
+                        </button>
                         
                     </form>
                 </div>
@@ -103,34 +103,38 @@
             </div>
             <!--deleteAndRemoveAndReset-->
             <div class="container">
-                @if ($menu->user_id == $user_id)
-                    <div class="edit">
-                        <a href="/menus/{{$menu->id}}/edit">edit</a>
-                    </div>
-                    @if ($menu->sharing == 0)
+                <div class="authoritySetting">
+                    @if ($menu->user_id == $user_id)
+                        <div class="edit">
+                            <button class="editButton">
+                                <a href="/menus/{{$menu->id}}/edit">edit</a>
+                            </button>
+                        </div>
+                        @if ($menu->sharing == 0)
                         <div class="delete">
                             <form action="/menus/{{$menu->id}}" id="form_{{$menu->id}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="deleteMenu({{$menu->id}})">delete</button>
+                                <button class="deleteButton" onclick="deleteMenu({{$menu->id}})">delete</button>
                             </form>
                         </div>
+                        @else
+                        @endif
                     @else
-                    @endif
-                @else
                     <div class="remove">
                         <form action="/menus/{{$menu->id}}/remove" id="form_{{$menu->id}}" method="post">
                             @csrf
-                            <button type="button" onclick="removeMenu({{$menu->id}})">remove</button>
+                            <button class="removeButton" onclick="removeMenu({{$menu->id}})">remove</button>
                         </form>
                     </div>
-                @endif
-                <div class="reset">
-                    <form action="/menus/{{$menu->id}}/reset" id="form_{{$menu->id}}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="button" onclick="resetResults({{$menu->id}})">reset</button>
-                    </form>
+                    @endif
+                    <div class="reset">
+                        <form action="/menus/{{$menu->id}}/reset" id="form_{{$menu->id}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="resetButton" onclick="resetResults({{$menu->id}})">reset</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             
