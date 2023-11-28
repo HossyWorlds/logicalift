@@ -237,7 +237,7 @@
     width:90%;
     height:100px;
 }
-.memoHistory{
+.memoHistory, .theLink{
     color: blue;
     text-decoration: underline;
     cursor: pointer; /* ポインターをリンク形状に変更 */
