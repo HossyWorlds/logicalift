@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FriendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +21,8 @@ use App\Http\Controllers\CategoryController;
   //  return view('welcome');
 //});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-//ここらへんに一番書きたい処理を書く。
+Route::get('/dashboard', [MenuController::class,'home'])
+->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::controller(MenuController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
@@ -43,7 +39,10 @@ Route::controller(MenuController::class)->middleware(['auth'])->group(function()
     Route::get('/menus/{menu}/edit', 'edit')->name('edit');
 });
 
-Route::get('/categories/{category}', [CategoryController::class,'index'])->middleware("auth");
+Route::controller(FriendController::class)->middleware(['auth'])->group(function(){
+    Route::get('/friends', 'friends')->name('friends');
+    Route::get('/friends/adminFriend', 'adminFriend')->name('adminFriend');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

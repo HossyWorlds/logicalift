@@ -9,6 +9,7 @@ use App\Models\Menu;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Result;
+use App\Models\Friend;
 
 use App\Http\Requests\MenuRequest;
 use App\Http\Requests\ResultRequest;
@@ -21,6 +22,15 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function home()
+    {
+        $friends = Friend::where('user_id', Auth::id())->orWhere('friend_id', Auth::id())->get();
+        
+        $friendRequests = Friend::where('friend_id', Auth::id())->where('status', 'pending')->get();
+        
+        return view('dashboard', compact('friends', 'friendRequests'));
+    }
+    
     public function index(Request $request)
     {
         //
