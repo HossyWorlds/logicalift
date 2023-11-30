@@ -23,9 +23,25 @@ class FriendController extends Controller
         return view('friends.friends', compact('friends', 'friendRequests'));
     }
     
-    public function adminFriend()
+    public function adminFriend(Request $request)
     {
-        return view('friends.adminFriend');
+        $keyword = $request->input('keyword');
+        $userQuery = User::query();
+        
+        if (!empty($keyword)) {
+            
+            $userQuery->where(function($query) use ($keyword) {
+                $query->where('id', 'LIKE', "%{$keyword}%")
+                ->orWhere('name', 'LIKE', "%{$keyword}%");
+            })->where('id', '!=', auth()->user()->id); // 自分のユーザーIDを除外
+            
+        } else {
+            $userQuery->where('id', '=', null);
+        }
+        
+        $users = $userQuery->get();
+        
+        return view('friends.adminFriend', compact('keyword', 'users'));
     }
     
 }
