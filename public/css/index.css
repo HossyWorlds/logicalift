@@ -77,7 +77,7 @@
 /*}*/
 
 .menuType,
-.container_title,
+.container_title
 {
     text-align:center;
     font-size:x-large;
@@ -277,7 +277,5 @@
 }
 
 @media screen and (max-width: 480px) {
-    .header {
-        
-    }
+    
 }
