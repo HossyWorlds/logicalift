@@ -28,7 +28,10 @@ class MenuController extends Controller
         
         $friendRequests = Friend::where('friend_id', Auth::id())->where('status', 'pending')->get();
         
-        return view('dashboard', compact('friends', 'friendRequests'));
+        return view('dashboard')->with([
+            'friends'=>$friends,
+            'friendRequests'=>$friendRequests
+            ]);
     }
     
     public function index(Request $request)
