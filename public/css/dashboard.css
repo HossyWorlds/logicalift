@@ -1,0 +1,13 @@
+.homeHeader{
+    margin-top:15px;
+    font-size:x-large;
+    font-weight:bold;
+}
+
+.backTo {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
