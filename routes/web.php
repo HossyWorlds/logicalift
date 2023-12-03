@@ -21,7 +21,7 @@ use App\Http\Controllers\FriendController;
   //  return view('welcome');
 //});
 
-Route::get('/dashboard', [MenuController::class,'home'])
+Route::get('/dashboard', [MenuController::class, 'home'])
 ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::controller(MenuController::class)->middleware(['auth'])->group(function(){
