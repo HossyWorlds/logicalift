@@ -13,134 +13,134 @@
         
     </head>
     <body>
-    <x-app-layout>
-        <x-slot name="title">
-            <h2>
-                {{ $menu->name }}
-            </h2>
-        </x-slot>
-        
-        <div>
-            <div class="container">
-                <!--Advice-->
-                <div class="adviceContents">
-                    <p>
-                        {{$advice ?? ''}}
-                    </p>
-                </div>
-                <!--MenuInfo-->
-                <div class="menuInfo">
-                    <div class="yourBest">
+        <x-app-layout>
+            <x-slot name="title">
+                <h2>
+                    {{ $menu->name }}
+                </h2>
+            </x-slot>
+            
+            <div>
+                <div class="container">
+                    <!--Advice-->
+                    <div class="adviceContents">
                         <p>
-                            最近のあなたのベスト：{{$maxResult->weight ?? 'データなし'}}kg&nbsp;{{$maxResult->reps ?? ''}}reps
+                            {{$advice ?? ''}}
                         </p>
                     </div>
-                    <div class="category">
-                        <p>
-                            部位：{{$menu->category->name}}
-                        </p>
+                    <!--MenuInfo-->
+                    <div class="menuInfo">
+                        <div class="yourBest">
+                            <p>
+                                最近のあなたのベスト：{{$maxResult->weight ?? 'データなし'}}&nbsp;{{$maxResult->reps ?? ''}}
+                            </p>
+                        </div>
+                        <div class="category">
+                            <p>
+                                部位：{{$menu->category->name}}
+                            </p>
+                        </div>
+                        <div class="stepUp">
+                            <p>
+                                ステップアップの間隔: {{$menu->plus_weight}}
+                            </p>
+                        </div>
+                        <div class="newWeight">
+                            <p>
+                                次の重さ：{{$newWeight ?? 'データなし'}}
+                            </p>
+                        </div>
+                        <div class="sharingOrNot">
+                            <p>
+                                メニュータイプ：{{$sharing}}
+                            </p>
+                        </div>
                     </div>
-                    <div class="stepUp">
-                        <p>
-                            ステップアップの間隔: {{$menu->plus_weight}}
-                        </p>
-                    </div>
-                    <div class="newWeight">
-                        <p>
-                            次の重さ：{{$newWeight ?? 'データなし'}}
-                        </p>
-                    </div>
-                    <div class="sharingOrNot">
-                        <p>
-                            メニュータイプ：{{$sharing}}
-                        </p>
+                    
+                    <div class="training">
+                        <p class="traingHint">トレーニング結果を記録し<br>Doneを押そう！</p>
+                        <form class="trainingForm" action="/menus/{{$menu->id}}/done" method="post">
+                            @csrf
+                            <div class="weight">
+                                <h1>重さ：</h1>
+                                <input type="number" name="result[weight]" step="0.1" value="{{ old('result.weight') }}">
+                                <h2>&nbsp;&nbsp;kg</h2>
+                            </div>
+                            <p class="weight_error" style="color:red">{{$errors->first('result.weight')}}</p>
+                            <div class="repetition">
+                                <h1>回数：</h1>
+                                <input type="number" name="result[reps]" value="{{ old('result.reps') }}">
+                                <h2>&nbsp;&nbsp;reps</h2>
+                            </div>
+                            <p class="reps_error" style="color:red">{{$errors->first('result.reps')}}</p>
+                            <div class="memo">
+                                <h1>メモ・備考等あれば：</h1>
+                                <input name="result[memo]" value="{{ old('result.memo') }}">
+                                <a class="memoHistory" href="/menus/{{$menu->id}}/memo">過去に書いたやつ</a>
+                            </div>
+                            <button class="doneButton">
+                                <input type="submit" value="Done"/>
+                            </button>
+                            
+                        </form>
                     </div>
                 </div>
                 
-                <div class="training">
-                    <p class="traingHint">トレーニング結果を記録し<br>Doneを押そう！</p>
-                    <form class="trainingForm" action="/menus/{{$menu->id}}/done" method="post">
-                        @csrf
-                        <div class="weight">
-                            <h1>重さ：</h1>
-                            <input type="number" name="result[weight]" step="0.1" value="{{ old('result.weight') }}">
-                            <h2>&nbsp;&nbsp;kg</h2>
-                        </div>
-                        <p class="weight_error" style="color:red">{{$errors->first('result.weight')}}</p>
-                        <div class="repetition">
-                            <h1>回数：</h1>
-                            <input type="number" name="result[reps]" value="{{ old('result.reps') }}">
-                            <h2>&nbsp;&nbsp;reps</h2>
-                        </div>
-                        <p class="reps_error" style="color:red">{{$errors->first('result.reps')}}</p>
-                        <div class="memo">
-                            <h1>メモ・備考等あれば：</h1>
-                            <input name="result[memo]" value="{{ old('result.memo') }}">
-                            <a class="memoHistory" href="/menus/{{$menu->id}}/memo">過去に書いたやつ</a>
-                        </div>
-                        <button class="doneButton">
-                            <input type="submit" value="Done"/>
-                        </button>
-                        
-                    </form>
+                <div>
+                    <!--bubbleChart-->
+                    <div class="chart">
+                        <canvas id="bubbleChart"></canvas>
+                    </div>
+                    <!--latestResult-->
+                    <div class="latestResult">
+                        <p>
+                            LatestResult
+                        </p>
+                        @foreach ($latestResults as $latestResult)
+                            <p>{{$latestResult->updated_at}}&nbsp;&nbsp;&nbsp;{{$latestResult->weight}}kg&nbsp;{{$latestResult->reps}}reps<br></P>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-            
-            <div>
-                <!--bubbleChart-->
-                <div class="chart">
-                    <canvas id="bubbleChart"></canvas>
-                </div>
-                <!--latestResult-->
-                <div class="latestResult">
-                    <p>
-                        LatestResult
-                    </p>
-                    @foreach ($latestResults as $latestResult)
-                        <p>{{$latestResult->updated_at}}&nbsp;&nbsp;&nbsp;{{$latestResult->weight}}kg&nbsp;{{$latestResult->reps}}reps<br></P>
-                    @endforeach
-                </div>
-            </div>
-            <!--deleteAndRemoveAndReset-->
-            <div class="container">
-                <div class="authoritySetting">
-                    @if ($menu->user_id == $user_id)
-                        <div class="edit">
-                            <button class="editButton">
-                                <a href="/menus/{{$menu->id}}/edit">edit</a>
-                            </button>
-                        </div>
-                        @if ($menu->sharing == 0)
-                        <div class="delete">
-                            <form action="/menus/{{$menu->id}}" id="form_{{$menu->id}}" method="post">
+                <!--deleteAndRemoveAndReset-->
+                <div class="container">
+                    <div class="authoritySetting">
+                        @if ($menu->user_id == $user_id)
+                            <div class="edit">
+                                <form action="/menus/{{$menu->id}}/edit">
+                                    <button class="editButton">edit</button>
+                                </form>
+                            </div>
+                            @if ($menu->sharing == 0)
+                            <div class="delete">
+                                <form action="/menus/{{$menu->id}}" id="form_{{$menu->id}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="deleteButton" onclick="deleteMenu({{$menu->id}})">delete</button>
+                                </form>
+                            </div>
+                            @else
+                            @endif
+                        @else
+                        <div class="remove">
+                            <form action="/menus/{{$menu->id}}/remove" id="form_{{$menu->id}}" method="post">
                                 @csrf
-                                @method('DELETE')
-                                <button class="deleteButton" onclick="deleteMenu({{$menu->id}})">delete</button>
+                                <button class="removeButton" onclick="removeMenu({{$menu->id}})">remove</button>
                             </form>
                         </div>
-                        @else
                         @endif
-                    @else
-                    <div class="remove">
-                        <form action="/menus/{{$menu->id}}/remove" id="form_{{$menu->id}}" method="post">
-                            @csrf
-                            <button class="removeButton" onclick="removeMenu({{$menu->id}})">remove</button>
-                        </form>
-                    </div>
-                    @endif
-                    <div class="reset">
-                        <form action="/menus/{{$menu->id}}/reset" id="form_{{$menu->id}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button class="resetButton" onclick="resetResults({{$menu->id}})">reset</button>
-                        </form>
+                        <div class="reset">
+                            <form action="/menus/{{$menu->id}}/reset" id="form_{{$menu->id}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="resetButton" onclick="resetResults({{$menu->id}})">reset</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
+                
             </div>
             
-        </div>
-        
-    </x-app-layout>
+        </x-app-layout>
         
         
         <script>
