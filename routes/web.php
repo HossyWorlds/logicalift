@@ -24,6 +24,10 @@ use App\Http\Controllers\FriendController;
 Route::get('/dashboard', [MenuController::class, 'home'])
 ->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard/appExplanation', function(){
+    return view('appExplanation');
+})->name('appExplanation');
+
 Route::controller(MenuController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
     Route::get('/menus/admin', 'admin')->name('admin');

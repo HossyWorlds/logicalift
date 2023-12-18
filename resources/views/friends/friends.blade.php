@@ -33,7 +33,8 @@
                         <li>{{ $friend->user->name }} ({{ $friend->status }})</li>
                     @endforeach
                 </ul>
-                <a class="theLink" href="/friends/adminFriend">フレンドを作る</a>
+                <a class="theLink">フレンドを作る</a>
+                <p>…まだフレンド機能が完成していないので、リンクをクリックしてもどこにも遷移しません。</p>
                 
                 <h1>Friend Requests</h1>
             

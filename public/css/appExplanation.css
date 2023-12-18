@@ -1,0 +1,28 @@
+/*文字の大きさ*/
+.container-appExplanation h1{
+    font-size: x-large;
+    color: lime;
+}
+
+.howToCalculate h2{
+    font-size: larger;
+}
+.howToCalculate p{
+    font-size:large;
+}
+
+/*配置*/
+.appExplanation_details{
+    
+}
+
+.app_evidence{
+    margin-top:25px;
+}
+.howToCalculate{
+    margin-top: 25px;
+}
+.backToDashboard{
+    margin-top: 25px;
+}
+

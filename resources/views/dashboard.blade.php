@@ -27,7 +27,7 @@
                 <div>
                     <h1 class="homeHeader">アプリの説明</h1>
                     <p>筋トレをする際、自分の過去のトレーニングデータに基づき、重量やレップ数についてアドバイスしてくれるアプリケーション。</p>
-                    <a class="theLink" href="appExplanation">もっと詳しく</a>
+                    <a class="theLink" href="/dashboard/appExplanation">もっと詳しく</a>
                 </div>
                 
                 <div>
