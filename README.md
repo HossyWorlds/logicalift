@@ -1,3 +1,20 @@
+## 使用技術一覧
+
+<p style="display: inline">
+    <!-- フレームワーク一覧 -->
+    <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">
+    <!-- フロントエンドの言語一覧 -->
+    <img src="https://img.shields.io/badge/-Html5-E34F26.svg?logo=html5&style=plastic">
+    <img src="https://img.shields.io/badge/-Css3-1572B6.svg?logo=css3&style=plastic">
+    <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=plastic">
+    <!-- バックエンドの言語一覧 -->
+    <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">
+    <!-- ミドルウェア一覧 -->
+    <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">
+    <!-- インフラ一覧 -->
+    <img src="https://img.shields.io/badge/-Amazon%20aws-232F3E.svg?logo=amazon-aws&style=plastic">
+</p>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -7,7 +24,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## logicaliftについて
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
