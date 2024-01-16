@@ -1,6 +1,10 @@
-## 使用技術一覧
+<p align="center">
+    <img src="https://github.com/HossyWorlds/logicalift/assets/124346220/4d5d10fe-cc6f-4f23-9c5f-daece5ab6663" width="" height="400">
+    <img src="https://github.com/HossyWorlds/logicalift/assets/124346220/e19215cf-c729-405f-b280-8a9770818e9e" width="" height="400">
+    <img src="https://github.com/HossyWorlds/logicalift/assets/124346220/86c69282-6539-4b9f-9505-ef0e93b8507b" width="" height="400">
+</p>
 
-<p style="display: inline">
+<p align="center">
     <!-- フレームワーク一覧 -->
     <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">
     <!-- フロントエンドの言語一覧 -->
@@ -15,69 +19,14 @@
     <img src="https://img.shields.io/badge/-Amazon%20aws-232F3E.svg?logo=amazon-aws&style=plastic">
 </p>
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## logicaliftについて
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+ユーザーのトレーニングデータに基づき、重量やレップ数をアドバイスしてくれるアプリケーションです。
+筋トレには漸進性の原則といったものがあり、毎度トレーニングの負荷を高めていく必要があります。現在自分が何キロを何回やれるのかは「感覚」で判断するのが通常ですが、これがあれば時間や脳のリソースの節約になります。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## アドバイスの根拠は？
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+RM換算表と呼ばれる指標があります。Max重量早見表とも言います。
+RMとはRepetition Maximumの略で、ある「重さ」で「何回」持ち上げられるかを示してくれる表になります。例えば、ベンチプレス「40kg」を「11回」持ち上げられると、それは「51kg」を「1回」持ち上げられる能力に等しいことがひと目でわかります。また、そこから派生して「42.5kg」を「8回」やれる能力が備わっていることもわかります。「8回」できればステップアップには十分です。これで次回のトレーニングの重さを「42.5kg」に設定するタイミングがわかりました。このようなことをアプリではやりたかったのです。
+ただ単にRM換算を行ってくれるだけのツールは存在します。しかし、ユーザーの過去の実績をデータベース化し、それを考慮したうえで適切なタイミングをアドバイスしてくれるようなツールはありませんでした。それを実現するのが、この『logicalift』です！！
