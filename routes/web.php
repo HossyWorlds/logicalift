@@ -21,10 +21,10 @@ use App\Http\Controllers\FriendController;
   //  return view('welcome');
 //});
 
-Route::get('/dashboard', [MenuController::class, 'home'])
-->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home', [MenuController::class, 'home'])
+->middleware(['auth', 'verified'])->name('home');
 
-Route::get('/dashboard/appExplanation', function(){
+Route::get('/appExplanation', function(){
     return view('appExplanation');
 })->name('appExplanation');
 
