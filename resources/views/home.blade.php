@@ -10,7 +10,7 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         
         <!--css-->
-        <link rel="stylesheet" href="{{asset('/css/dashboard.css')}}"/>
+        <link rel="stylesheet" href="{{asset('/css/home.css')}}"/>
         
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -25,22 +25,9 @@
             <div class="container">
                 
                 <div>
-                    <h1 class="homeHeader">アプリの説明</h1>
                     <p>筋トレをする際、自分の過去のトレーニングデータに基づき、重量やレップ数についてアドバイスしてくれるアプリケーション。</p>
-                    <a class="theLink" href="/dashboard/appExplanation">もっと詳しく</a>
+                    <a class="theLink" href="/appExplanation">もっと詳しく</a>
                 </div>
-                
-                <div>
-                    <h1 class="homeHeader">フレンド</h1>
-                    <a class="theLink" href="/friends">フレンド一覧へ</a>
-                </div>
-                
-                <div>
-                    <h1 class="homeHeader">自分とフレンドの実績</h1>
-                    <p>…共有メニューそれぞれに対し、バブルチャートが展開され、自分とフレンドとの実績を比較できる。</p>
-                    <p>...作成中</p>
-                </div>
-                
                 
             </div>
             

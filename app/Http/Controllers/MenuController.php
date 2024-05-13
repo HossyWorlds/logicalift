@@ -24,14 +24,18 @@ class MenuController extends Controller
      */
     public function home()
     {
-        $friends = Friend::where('user_id', Auth::id())->orWhere('friend_id', Auth::id())->get();
+        // フレンド関係の機能は廃止
+        // よってこいつらも消す予定
+        // $friends = Friend::where('user_id', Auth::id())->orWhere('friend_id', Auth::id())->get();
         
-        $friendRequests = Friend::where('friend_id', Auth::id())->where('status', 'pending')->get();
+        // $friendRequests = Friend::where('friend_id', Auth::id())->where('status', 'pending')->get();
         
-        return view('dashboard')->with([
-            'friends'=>$friends,
-            'friendRequests'=>$friendRequests
-            ]);
+        return view('home')
+        // ->with([
+        //     'friends'=>$friends,
+        //     'friendRequests'=>$friendRequests
+        //     ])
+        ;
     }
     
     public function index(Request $request)
