@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\FriendController;
 
 /*
@@ -21,8 +22,8 @@ use App\Http\Controllers\FriendController;
   //  return view('welcome');
 //});
 
-Route::get('/home', [MenuController::class, 'home'])
-->middleware(['auth', 'verified'])->name('home');
+Route::get('/aboutus', [AboutUsController::class, 'aboutus'])
+->middleware(['auth', 'verified'])->name('aboutus');
 
 Route::get('/appExplanation', function(){
     return view('appExplanation');

@@ -10,7 +10,7 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         
         <!--css-->
-        <link rel="stylesheet" href="{{asset('/css/home.css')}}"/>
+        <link rel="stylesheet" href="{{asset('/css/aboutus.css')}}"/>
         
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -18,7 +18,7 @@
         <x-app-layout>
             <x-slot name="title">
                 <h2>
-                    {{ __('Home') }}
+                    {{ __('aboutus') }}
                 </h2>
             </x-slot>
             
