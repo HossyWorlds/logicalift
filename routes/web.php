@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\FriendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,11 +41,6 @@ Route::controller(MenuController::class)->middleware(['auth'])->group(function()
     Route::post('/menus/{menu}/remove', 'remove')->name('remove');
     Route::delete('/menus/{menu}', 'delete')->name('delete');
     Route::get('/menus/{menu}/edit', 'edit')->name('edit');
-});
-
-Route::controller(FriendController::class)->middleware(['auth'])->group(function(){
-    Route::get('/friends', 'friends')->name('friends');
-    Route::get('/friends/adminFriend', 'adminFriend')->name('adminFriend');
 });
 
 Route::middleware('auth')->group(function () {
