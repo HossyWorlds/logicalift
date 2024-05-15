@@ -59,7 +59,7 @@
                     </div>
                     
                     <div class="backToDashboard">
-                        <a class="theLink" href="/dashboard">戻る</a>
+                        <a class="theLink" href="/aboutus">戻る</a>
                     </div>
                     
                 </div>
