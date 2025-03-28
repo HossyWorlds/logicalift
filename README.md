@@ -13,10 +13,8 @@
     <img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=javascript&style=plastic">
     <!-- バックエンドの言語一覧 -->
     <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">
-    <!-- ミドルウェア一覧 -->
+    <!-- データベース -->
     <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">
-    <!-- インフラ一覧 -->
-    <img src="https://img.shields.io/badge/-Amazon%20aws-232F3E.svg?logo=amazon-aws&style=plastic">
 </p>
 
 ## logicaliftについて
