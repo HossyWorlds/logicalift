@@ -1,28 +1,31 @@
-FROM php:8.1.0-fpm
+FROM php:8.2-fpm-bullseye
 
-RUN apt update && apt install -y \
+# Install dependencies and clean up in a single RUN to reduce layers
+RUN apt-get update && apt-get install -y \
     curl \
     zip \
     unzip \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
-    libpq-dev 
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql zip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN docker-php-ext-install pdo pdo_pgsql
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN mkdir -p /var/www/logicalift
-RUN mkdir -p /var/www/logicalift/storage
-RUN chown -R www-data:www-data /var/www/logicalift \
+# Set up directories with proper permissions
+RUN mkdir -p /var/www/logicalift/storage \
+    && chown -R www-data:www-data /var/www/logicalift \
     && chmod -R 775 /var/www/logicalift/storage
 
 WORKDIR /var/www/logicalift
 
-COPY . .
-
+COPY --chown=www-data:www-data . .
 COPY php.ini /usr/local/etc/php/php.ini
+
+# Run as non-root user
+USER www-data
 
 EXPOSE 9000
 
