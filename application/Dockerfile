@@ -22,7 +22,7 @@ WORKDIR /var/www/logicalift
 
 COPY . .
 
-COPY php.ini /usr/local/etc/php/
+COPY php.ini /usr/local/etc/php/php.ini
 
 EXPOSE 9000
 
