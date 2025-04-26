@@ -1,0 +1,26 @@
+# Nginx logs
+nginx/logs/error.log
+nginx/logs/access.log
+
+# Laravel & Application specific
+/application/node_modules
+/application/public/build
+/application/public/hot
+/application/public/storage
+/application/storage/*.key
+/application/vendor
+/application/.env
+/application/.env.backup
+/application/.env.production
+/application/.phpunit.result.cache
+/application/Homestead.json
+/application/Homestead.yaml
+/application/auth.json
+/application/npm-debug.log
+/application/yarn-error.log
+/application/.fleet
+/application/.idea
+/application/.vscode
+
+# MySQL data 
+/db/data/ 
