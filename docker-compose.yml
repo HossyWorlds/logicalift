@@ -2,6 +2,9 @@ networks:
   logicalift:
     driver: bridge
 
+volumes:
+  mysql_data:
+
 services:
   application:
     build:
@@ -34,6 +37,6 @@ services:
       MYSQL_USER: logicalift
       MYSQL_PASSWORD: logicalift
     volumes:
-      - ./db:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     networks:
       - logicalift

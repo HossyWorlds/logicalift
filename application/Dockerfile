@@ -9,10 +9,18 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libpq-dev \
-    && docker-php-ext-install pdo pdo_pgsql zip \
+    default-mysql-client \
+    gnupg \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set up directories with proper permissions
 RUN mkdir -p /var/www/logicalift/storage \
