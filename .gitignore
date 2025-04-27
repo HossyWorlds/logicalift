@@ -1,6 +1,6 @@
 # Nginx logs
-nginx/logs/error.log
-nginx/logs/access.log
+nginx/logs/*
+!nginx/logs/.gitkeep
 
 # Laravel & Application specific
 /application/node_modules
